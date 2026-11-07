@@ -1,0 +1,490 @@
+<title>Valencias para formular</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: una columna estrecha tipo cuaderno de laboratorio; las fichas imitan las casillas de la tabla periódica. */
+:root {
+  --bg: #eef2f4;
+  --surface: #ffffff;
+  --ink: #18252d;
+  --muted: #5b6b75;
+  --line: #d3dce1;
+  --accent: #2346c4;
+  --accent-soft: #e2e8fb;
+  --metal: #b0640c;
+  --metal-soft: #fbeedd;
+  --nometal: #0f7d73;
+  --nometal-soft: #dcf2ef;
+  --neg: #b4234a;
+  --neg-soft: #fbe3ea;
+  --ok: #1d7a3a;
+  --ok-soft: #dff2e4;
+  --bad: #b4234a;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f161b; --surface: #17222a; --ink: #e4ecf0; --muted: #93a4ae; --line: #2a3943;
+    --accent: #8fa6ff; --accent-soft: #1f2a4d;
+    --metal: #f0a54a; --metal-soft: #3a2a14;
+    --nometal: #4fd1c1; --nometal-soft: #123532;
+    --neg: #ff8aa6; --neg-soft: #3d1a25;
+    --ok: #6fd88f; --ok-soft: #173322; --bad: #ff8aa6;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f161b; --surface: #17222a; --ink: #e4ecf0; --muted: #93a4ae; --line: #2a3943;
+  --accent: #8fa6ff; --accent-soft: #1f2a4d;
+  --metal: #f0a54a; --metal-soft: #3a2a14;
+  --nometal: #4fd1c1; --nometal-soft: #123532;
+  --neg: #ff8aa6; --neg-soft: #3d1a25;
+  --ok: #6fd88f; --ok-soft: #173322; --bad: #ff8aa6;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.5;
+}
+.wrap {
+  max-width: 980px; margin: 0 auto;
+  padding-block: 28px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 24px;
+}
+header { display: grid; gap: 6px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(32px, 6vw, 52px); line-height: 1; margin: 0; letter-spacing: -.02em; text-wrap: balance; }
+h1 span { color: var(--accent); }
+.lede { margin: 0; color: var(--muted); max-width: 62ch; }
+h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 0; text-wrap: balance; }
+
+nav.tabs { display: flex; gap: 6px; flex-wrap: wrap; position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 8px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.tab {
+  font: 700 15px var(--body); padding: 9px 16px; border-radius: 999px;
+  border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer;
+}
+.tab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+button:focus-visible, .tile:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 6px; }
+
+/* Familias */
+.family { display: grid; gap: 12px; padding-block: 18px; border-top: 1px solid var(--line); }
+.fam-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.rule { font-family: var(--mono); font-size: 14px; font-weight: 700; }
+.metal .rule { color: var(--metal); }
+.nometal .rule { color: var(--nometal); }
+.truco { margin: 0; font-size: 15px; color: var(--muted); max-width: 70ch; }
+.truco b { color: var(--ink); }
+.truco mark { background: none; color: var(--accent); font-weight: 700; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+.tile {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: 6px;
+  padding: 8px 10px 10px; display: grid; gap: 2px; min-width: 0; position: relative;
+}
+.metal .tile { border-top: 4px solid var(--metal); }
+.nometal .tile { border-top: 4px solid var(--nometal); }
+.tile .z { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.tile .sym { font-family: var(--display); font-weight: 800; font-size: 34px; line-height: 1; }
+.tile .name { font-size: 13px; color: var(--muted); }
+.vals { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.v { font: 700 13px var(--mono); padding: 2px 6px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); font-variant-numeric: tabular-nums; }
+.v.neg { background: var(--neg-soft); color: var(--neg); }
+.note { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.35; }
+
+/* Tarjetas */
+.panel { background: var(--surface); border: 1.5px solid var(--line); border-radius: 10px; padding: 22px; display: grid; gap: 18px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.spread { justify-content: space-between; }
+.card {
+  min-height: 250px; border-radius: 10px; border: 2px dashed var(--line); background: var(--bg);
+  display: grid; place-items: center; text-align: center; padding: 20px; cursor: pointer; user-select: none;
+}
+.card .sym { font-family: var(--display); font-weight: 800; font-size: 96px; line-height: 1; }
+.card .name { color: var(--muted); font-size: 18px; }
+.card .hint { font-size: 14px; color: var(--muted); margin-top: 10px; }
+.card .vals { justify-content: center; }
+.card .v { font-size: 22px; padding: 4px 10px; }
+.btn {
+  font: 700 15px var(--body); padding: 10px 18px; border-radius: 8px; cursor: pointer;
+  border: 1.5px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.btn.primary { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+.btn.good { background: var(--ok-soft); color: var(--ok); border-color: var(--ok); }
+.btn.again { background: var(--neg-soft); color: var(--bad); border-color: var(--bad); }
+.btn:disabled { opacity: .45; cursor: default; }
+.small { font-size: 14px; color: var(--muted); }
+select { font: 15px var(--body); padding: 8px 10px; border-radius: 8px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); max-width: 100%; }
+label.chk { font-size: 15px; display: inline-flex; gap: 6px; align-items: center; }
+
+/* Test */
+.q { display: grid; gap: 6px; justify-items: center; text-align: center; padding-block: 8px; }
+.q .sym { font-family: var(--display); font-weight: 800; font-size: 80px; line-height: 1; }
+.q .name { color: var(--muted); font-size: 18px; }
+.q .ask { font-weight: 700; }
+.pad { display: grid; grid-template-columns: repeat(auto-fill, minmax(58px, 1fr)); gap: 8px; }
+.pad button {
+  font: 700 18px var(--mono); padding: 12px 0; border-radius: 8px; cursor: pointer;
+  border: 1.5px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.pad button.neg { color: var(--neg); }
+.pad button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.pad button.miss { outline: 3px dashed var(--ok); outline-offset: -3px; }
+.pad button.wrong { background: var(--neg-soft); border-color: var(--bad); color: var(--bad); }
+.opts { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+.opts button { padding: 12px; border-radius: 8px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; display: grid; gap: 2px; }
+.opts button .s { font: 800 30px var(--display); line-height: 1; }
+.opts button .n { font-size: 13px; color: var(--muted); }
+.opts button.right { background: var(--ok-soft); border-color: var(--ok); }
+.opts button.wrong { background: var(--neg-soft); border-color: var(--bad); }
+.feedback { border-radius: 8px; padding: 12px 14px; font-weight: 700; }
+.feedback.ok { background: var(--ok-soft); color: var(--ok); }
+.feedback.no { background: var(--neg-soft); color: var(--bad); }
+.feedback .vals { margin-top: 6px; }
+.score { font-family: var(--mono); font-size: 14px; display: flex; gap: 14px; flex-wrap: wrap; font-variant-numeric: tabular-nums; }
+
+/* Trucos */
+.tips { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.tip { background: var(--surface); border: 1.5px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 6px; align-content: start; }
+.tip h3 { font-family: var(--display); font-size: 18px; margin: 0; }
+.tip p { margin: 0; }
+.formula { font-family: var(--mono); font-size: 15px; background: var(--bg); border-radius: 6px; padding: 8px 10px; overflow-x: auto; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .card, .tab, .btn, .pad button { transition: background-color .15s, border-color .15s, color .15s; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Formulación inorgánica · números de oxidación</div>
+    <h1>Valencias <span>para formular</span></h1>
+    <p class="lede">Repasa la chuleta con sus trucos, practica con tarjetas y ponte a prueba con el test. Tus fallos se guardan en este navegador para que puedas repasar solo los que te cuestan.</p>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Secciones">
+    <button class="tab" role="tab" id="t-tabla" aria-selected="true" data-view="tabla">Chuleta</button>
+    <button class="tab" role="tab" id="t-tarjetas" aria-selected="false" data-view="tarjetas">Tarjetas</button>
+    <button class="tab" role="tab" id="t-test" aria-selected="false" data-view="test">Test</button>
+    <button class="tab" role="tab" id="t-trucos" aria-selected="false" data-view="trucos">Cómo se usan</button>
+  </nav>
+
+  <!-- CHULETA -->
+  <section id="v-tabla" class="view" role="tabpanel" aria-labelledby="t-tabla">
+    <div class="legend">
+      <span><i style="background:var(--metal)"></i>Metal</span>
+      <span><i style="background:var(--nometal)"></i>No metal</span>
+      <span><i style="background:var(--neg-soft);border:1px solid var(--neg)"></i>Negativa: con H o con metales</span>
+      <span><i style="background:var(--accent-soft);border:1px solid var(--accent)"></i>Positiva: con oxígeno</span>
+    </div>
+    <div id="families"></div>
+  </section>
+
+  <!-- TARJETAS -->
+  <section id="v-tarjetas" class="view" role="tabpanel" aria-labelledby="t-tarjetas" hidden>
+    <div class="panel">
+      <div class="row spread">
+        <div class="row">
+          <select id="fc-filter" aria-label="Qué elementos repasar"></select>
+        </div>
+        <span class="small" id="fc-count"></span>
+      </div>
+      <div class="card" id="fc-card" tabindex="0" role="button" aria-label="Dar la vuelta a la tarjeta"></div>
+      <div class="row">
+        <button class="btn again" id="fc-again" disabled>Repasar otra vez</button>
+        <button class="btn good" id="fc-good" disabled>Me la sé</button>
+        <button class="btn" id="fc-flip">Dar la vuelta</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEST -->
+  <section id="v-test" class="view" role="tabpanel" aria-labelledby="t-test" hidden>
+    <div class="panel">
+      <div class="row spread">
+        <div class="row">
+          <select id="qz-mode" aria-label="Tipo de pregunta">
+            <option value="el">Elemento → valencias</option>
+            <option value="val">Valencias → elemento</option>
+          </select>
+          <select id="qz-filter" aria-label="Qué elementos preguntar"></select>
+        </div>
+        <div class="score"><span id="qz-score">0 / 0</span><span id="qz-streak">Racha: 0</span></div>
+      </div>
+      <div id="qz-body"></div>
+      <div id="qz-feedback"></div>
+      <div class="row">
+        <button class="btn primary" id="qz-check">Comprobar</button>
+        <button class="btn" id="qz-next" hidden>Siguiente</button>
+        <button class="btn" id="qz-reset">Borrar mis fallos</button>
+      </div>
+      <p class="small" id="qz-missinfo"></p>
+    </div>
+  </section>
+
+  <!-- TRUCOS -->
+  <section id="v-trucos" class="view" role="tabpanel" aria-labelledby="t-trucos" hidden>
+    <div class="tips">
+      <div class="tip">
+        <h3>Primero, los patrones</h3>
+        <p>No hace falta memorizar elemento a elemento. Los no metales siguen una pauta muy clara:</p>
+        <p><b>Halógenos</b> (Cl, Br, I): impares <b>1 3 5 7</b>.<br><b>Anfígenos</b> (S, Se, Te): pares <b>2 4 6</b>.<br><b>Nitrogenoideos</b> (P, As, Sb): <b>3 5</b>.<br><b>Carbono</b>: <b>2 4</b>.</p>
+        <p>Y la negativa es lo que les falta para llegar a 8: halógenos −1, anfígenos −2, nitrogenoideos −3, carbonoideos −4.</p>
+      </div>
+      <div class="tip">
+        <h3>¿Cuándo uso la negativa?</h3>
+        <p>Cuando el no metal va con <b>hidrógeno</b> o con un <b>metal</b>: hidruros, haluros, sales binarias.</p>
+        <div class="formula">HCl · H₂S · NaCl · FeS · NH₃</div>
+        <p>Con <b>oxígeno</b> se usan las positivas: óxidos, ácidos oxácidos y oxisales.</p>
+        <div class="formula">Cl₂O₇ · SO₃ · H₂SO₄ · HNO₃</div>
+      </div>
+      <div class="tip">
+        <h3>Intercambia las valencias</h3>
+        <p>En un compuesto binario, la valencia de cada uno pasa como subíndice del otro y luego se simplifica si se puede.</p>
+        <div class="formula">Fe(+3) + O(−2) → Fe₂O₃<br>Ca(+2) + Cl(−1) → CaCl₂<br>S(+6) + O(−2) → S₂O₆ → SO₃</div>
+      </div>
+      <div class="tip">
+        <h3>Los dos “raros”: Cr y Mn</h3>
+        <p>Actúan como metal con sus valencias bajas y como no metal con las altas.</p>
+        <div class="formula">Cr: +2 +3 metal · +6 no metal (H₂CrO₄)<br>Mn: +2 +3 metal · +4 +6 +7 no metal (KMnO₄)</div>
+      </div>
+      <div class="tip">
+        <h3>Valencias fijas que nunca cambian</h3>
+        <p><b>O</b> siempre −2 (salvo en peróxidos, −1). <b>F</b> siempre −1. <b>H</b> +1 con no metales y −1 con metales (hidruros metálicos como NaH).</p>
+      </div>
+      <div class="tip">
+        <h3>Cómo estudiar con esta página</h3>
+        <p>1. Lee la chuleta y di en voz alta cada truco.<br>2. Pasa las tarjetas hasta que todas estén en “Me la sé”.<br>3. Haz el test y, al final, repasa con el filtro <b>“Solo mis fallos”</b>.<br>Repite al día siguiente: cinco minutos diarios funcionan mejor que una hora el último día.</p>
+      </div>
+      <div class="tip">
+        <h3>Ojo con tu libro</h3>
+        <p>Algunos libros y profesores añaden o quitan valencias (por ejemplo, N con +1 +2 +4, o Pb solo con +2 +4). Si tu tabla de clase es distinta, manda la de clase.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ---- Datos -------------------------------------------------------------
+const FAMILIES = [
+  { id: "m1", tipo: "metal", t: "Metales con +1", rule: "+1",
+    truco: "<mark>Li</mark>sa <mark>Na</mark>da <mark>K</mark>on <mark>R</mark>u<mark>b</mark>én, <mark>C</mark>a<mark>s</mark>i <mark>Fr</mark>ente al <mark>Ag</mark>ua.",
+    els: [["Li","Litio",3],["Na","Sodio",11],["K","Potasio",19],["Rb","Rubidio",37],["Cs","Cesio",55],["Fr","Francio",87],["Ag","Plata",47]], v: [1] },
+  { id: "m2", tipo: "metal", t: "Metales con +2", rule: "+2",
+    truco: "<mark>Be</mark>tty <mark>M</mark>a<mark>g</mark>a <mark>Ca</mark>nta con el <mark>S</mark>eño<mark>r</mark> <mark>Ba</mark>r<mark>Ra</mark>cuda en <mark>Z</mark>a<mark>n</mark>cos <mark>C</mark>a<mark>d</mark>a día.",
+    els: [["Be","Berilio",4],["Mg","Magnesio",12],["Ca","Calcio",20],["Sr","Estroncio",38],["Ba","Bario",56],["Ra","Radio",88],["Zn","Cinc",30],["Cd","Cadmio",48]], v: [2] },
+  { id: "m3", tipo: "metal", t: "Metal con +3", rule: "+3",
+    truco: "El <mark>Al</mark>uminio va solo: <b>3</b> letras en “Al3”. Piensa en el papel de aluminio de 3 capas.",
+    els: [["Al","Aluminio",13]], v: [3] },
+  { id: "m12", tipo: "metal", t: "Metales con +1 y +2", rule: "+1 +2",
+    truco: "<mark>Cu</mark>ando <mark>H</mark>a<mark>g</mark>o <b>1</b> o <b>2</b> cosas a la vez: cobre y mercurio.",
+    els: [["Cu","Cobre",29],["Hg","Mercurio",80]], v: [1,2] },
+  { id: "m13", tipo: "metal", t: "Metal con +1 y +3", rule: "+1 +3",
+    truco: "El <mark>Au</mark> (oro) sube al podio en el <b>1.º</b> o en el <b>3.º</b> puesto, nunca en el 2.º.",
+    els: [["Au","Oro",79]], v: [1,3] },
+  { id: "m23", tipo: "metal", t: "Metales con +2 y +3", rule: "+2 +3",
+    truco: "“<mark>Fe</mark>-<mark>Co</mark>-<mark>Ni</mark>”: hierro, cobalto y níquel van seguidos en la tabla y tienen las mismas, <b>2 y 3</b>.",
+    els: [["Fe","Hierro",26],["Co","Cobalto",27],["Ni","Níquel",28]], v: [2,3] },
+  { id: "m24", tipo: "metal", t: "Metales con +2 y +4", rule: "+2 +4",
+    truco: "<mark>P</mark>la<mark>t</mark>ino, <mark>P</mark>lomo y e<mark>S</mark>taño: los de los “<b>2 y 4</b> pies”: <b>P</b>a<b>t</b>a, <b>P</b>ata y <b>S</b>a<b>n</b>dalia.",
+    els: [["Pt","Platino",78],["Pb","Plomo",82],["Sn","Estaño",50]], v: [2,4] },
+  { id: "esp", tipo: "metal", t: "Metales que también hacen de no metal", rule: "bajas: metal · altas: no metal",
+    truco: "El <mark>Cr</mark>omo cuenta <b>2, 3… ¡6!</b> El <mark>Mn</mark> manganeso va de <b>2 a 7</b> saltándose el 5.",
+    els: [["Cr","Cromo",24,[2,3,6],"+2 +3 metal · +6 no metal"],["Mn","Manganeso",25,[2,3,4,6,7],"+2 +3 metal · +4 +6 +7 no metal"]] },
+  { id: "h", tipo: "nometal", t: "Hidrógeno", rule: "+1 −1",
+    truco: "+1 con no metales (HCl, H₂O); −1 con metales (NaH, CaH₂).",
+    els: [["H","Hidrógeno",1]], v: [-1,1] },
+  { id: "hal", tipo: "nometal", t: "Halógenos", rule: "−1 · impares 1 3 5 7",
+    truco: "<b>Impares</b> hasta el 7. El <mark>F</mark>lúor es el “<b>F</b>ijo”: solo −1.",
+    els: [["F","Flúor",9,[-1],"Solo −1"],["Cl","Cloro",17],["Br","Bromo",35],["I","Yodo",53]], v: [-1,1,3,5,7] },
+  { id: "anf", tipo: "nometal", t: "Anfígenos", rule: "−2 · pares 2 4 6",
+    truco: "<b>Pares</b> hasta el 6. El <mark>O</mark>xígeno es “<b>O</b>bstinado”: siempre −2.",
+    els: [["O","Oxígeno",8,[-2],"Siempre −2 (−1 en peróxidos)"],["S","Azufre",16],["Se","Selenio",34],["Te","Teluro",52]], v: [-2,2,4,6] },
+  { id: "nit", tipo: "nometal", t: "Nitrogenoideos", rule: "−3 · 3 5",
+    truco: "“<mark>N</mark>o <mark>P</mark>uedo <mark>As</mark>ar <mark>Sb</mark>…” <b>3 o 5</b> chuletas. El N además tiene 1, 2 y 4 en óxidos.",
+    els: [["N","Nitrógeno",7,[-3,1,2,3,4,5],"Con oxácidos usa +3 y +5"],["P","Fósforo",15],["As","Arsénico",33],["Sb","Antimonio",51]], v: [-3,3,5] },
+  { id: "car", tipo: "nometal", t: "Carbonoideos", rule: "−4 · 2 4",
+    truco: "El <mark>C</mark>arbono va de <b>2 en 2</b> hasta el 4. El <mark>Si</mark>licio dice “<b>Sí</b>, solo el 4”.",
+    els: [["C","Carbono",6],["Si","Silicio",14,[-4,4],"Solo +4 y −4"]], v: [-4,2,4] },
+  { id: "b", tipo: "nometal", t: "Boro", rule: "−3 · 3",
+    truco: "El <mark>B</mark>oro se parece al aluminio, que está debajo: <b>3</b>.",
+    els: [["B","Boro",5]], v: [-3,3] },
+];
+
+const ELEMENTS = [];
+FAMILIES.forEach(f => f.els.forEach(e => {
+  ELEMENTS.push({ s: e[0], n: e[1], z: e[2], v: (e[3] || f.v).slice().sort((a,b)=>a-b), note: e[4] || "", fam: f.id, tipo: f.tipo });
+}));
+const BY_SYM = Object.fromEntries(ELEMENTS.map(e => [e.s, e]));
+const ALL_VALS = [-4,-3,-2,-1,1,2,3,4,5,6,7];
+
+const fmt = n => (n > 0 ? "+" : "−") + Math.abs(n);
+const valsHTML = v => `<div class="vals">${v.map(n => `<span class="v${n<0?" neg":""}">${fmt(n)}</span>`).join("")}</div>`;
+const key = v => v.join(",");
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+// ---- Fallos guardados (solo en este navegador) ---------------------------
+let misses = {};
+try { misses = JSON.parse(localStorage.getItem("valencias-fallos") || "{}") || {}; } catch (e) { misses = {}; }
+function saveMisses() { try { localStorage.setItem("valencias-fallos", JSON.stringify(misses)); } catch (e) {} }
+
+// ---- Pestañas ----------------------------------------------------------
+const tabs = document.querySelectorAll(".tab");
+function show(view) {
+  tabs.forEach(t => t.setAttribute("aria-selected", String(t.dataset.view === view)));
+  document.querySelectorAll(".view").forEach(v => { v.hidden = v.id !== "v-" + view; });
+  if (view === "test") updateMissInfo();
+}
+tabs.forEach(t => t.addEventListener("click", () => show(t.dataset.view)));
+
+// ---- Chuleta -----------------------------------------------------------
+document.getElementById("families").innerHTML = FAMILIES.map(f => `
+  <div class="family ${f.tipo}">
+    <div class="fam-head"><h2>${f.t}</h2><span class="rule">${f.rule}</span></div>
+    <p class="truco">${f.truco}</p>
+    <div class="tiles">${f.els.map(e => { const el = BY_SYM[e[0]]; return `
+      <div class="tile">
+        <span class="z">${el.z}</span>
+        <span class="sym">${el.s}</span>
+        <span class="name">${el.n}</span>
+        ${valsHTML(el.v)}
+        ${el.note ? `<span class="note">${el.note}</span>` : ""}
+      </div>`; }).join("")}</div>
+  </div>`).join("");
+
+// ---- Filtros compartidos -----------------------------------------------
+function filterOptions(sel) {
+  sel.innerHTML = `<option value="all">Todos los elementos</option>
+    <option value="metal">Solo metales</option>
+    <option value="nometal">Solo no metales</option>
+    <option value="misses">Solo mis fallos</option>
+    ${FAMILIES.map(f => `<option value="f:${f.id}">${f.t}</option>`).join("")}`;
+}
+function pool(filter) {
+  let p;
+  if (filter === "all") p = ELEMENTS;
+  else if (filter === "metal" || filter === "nometal") p = ELEMENTS.filter(e => e.tipo === filter);
+  else if (filter === "misses") p = ELEMENTS.filter(e => misses[e.s] > 0);
+  else p = ELEMENTS.filter(e => e.fam === filter.slice(2));
+  return p.length ? p : ELEMENTS;
+}
+
+// ---- Tarjetas ----------------------------------------------------------
+const fcFilter = document.getElementById("fc-filter"), fcCard = document.getElementById("fc-card");
+const fcGood = document.getElementById("fc-good"), fcAgain = document.getElementById("fc-again");
+filterOptions(fcFilter);
+let deck = [], known = 0, total = 0, flipped = false;
+function newDeck() { deck = shuffle(pool(fcFilter.value)); total = deck.length; known = 0; renderCard(); }
+function renderCard() {
+  document.getElementById("fc-count").textContent = `${known} de ${total} sabidas`;
+  if (!deck.length) {
+    fcCard.innerHTML = `<div><div class="sym" style="font-size:56px">¡Hecho!</div><div class="hint">Te las sabes todas. Pulsa para empezar otra ronda.</div></div>`;
+    fcGood.disabled = fcAgain.disabled = true; flipped = null; return;
+  }
+  const e = deck[0];
+  fcCard.innerHTML = flipped
+    ? `<div><div class="sym" style="font-size:56px">${e.s}</div>${valsHTML(e.v)}${e.note ? `<div class="hint">${e.note}</div>` : ""}</div>`
+    : `<div><div class="sym">${e.s}</div><div class="name">${e.n}</div><div class="hint">Dilo en voz alta y pulsa para comprobar</div></div>`;
+  fcGood.disabled = fcAgain.disabled = !flipped;
+}
+function flip() { if (flipped === null) { flipped = false; newDeck(); return; } flipped = !flipped; renderCard(); }
+fcCard.addEventListener("click", flip);
+fcCard.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); flip(); } });
+document.getElementById("fc-flip").addEventListener("click", flip);
+fcGood.addEventListener("click", () => { deck.shift(); known++; flipped = false; renderCard(); });
+fcAgain.addEventListener("click", () => {
+  const e = deck.shift(); deck.splice(Math.min(deck.length, 3), 0, e);
+  misses[e.s] = (misses[e.s] || 0) + 1; saveMisses(); flipped = false; renderCard();
+});
+fcFilter.addEventListener("change", () => { flipped = false; newDeck(); });
+newDeck();
+
+// ---- Test --------------------------------------------------------------
+const qzMode = document.getElementById("qz-mode"), qzFilter = document.getElementById("qz-filter");
+const qzBody = document.getElementById("qz-body"), qzFb = document.getElementById("qz-feedback");
+const qzCheck = document.getElementById("qz-check"), qzNext = document.getElementById("qz-next");
+filterOptions(qzFilter);
+let cur = null, picked = new Set(), answered = false, ok = 0, done = 0, streak = 0, last = null;
+
+function updateScore() {
+  document.getElementById("qz-score").textContent = `${ok} / ${done}`;
+  document.getElementById("qz-streak").textContent = `Racha: ${streak}`;
+}
+function updateMissInfo() {
+  const list = ELEMENTS.filter(e => misses[e.s] > 0).sort((a,b) => misses[b.s] - misses[a.s]);
+  document.getElementById("qz-missinfo").textContent = list.length
+    ? "Los que más te cuestan: " + list.slice(0, 10).map(e => `${e.s} (${misses[e.s]})`).join(", ")
+    : "Todavía no tienes fallos guardados.";
+}
+function record(e, right) {
+  done++;
+  if (right) { ok++; streak++; if (misses[e.s]) { misses[e.s]--; if (!misses[e.s]) delete misses[e.s]; } }
+  else { streak = 0; misses[e.s] = (misses[e.s] || 0) + 1; }
+  saveMisses(); updateScore(); updateMissInfo();
+}
+function nextQ() {
+  answered = false; picked = new Set(); qzFb.innerHTML = "";
+  qzNext.hidden = true; qzCheck.hidden = qzMode.value !== "el"; qzCheck.disabled = false;
+  const p = pool(qzFilter.value);
+  do { cur = p[Math.floor(Math.random() * p.length)]; } while (p.length > 1 && cur === last);
+  last = cur;
+  if (qzMode.value === "el") {
+    qzBody.innerHTML = `<div class="q"><div class="sym">${cur.s}</div><div class="name">${cur.n}</div>
+      <div class="ask">Marca todas sus valencias</div></div>
+      <div class="pad">${ALL_VALS.map(n => `<button type="button" data-n="${n}" aria-pressed="false" class="${n<0?"neg":""}">${fmt(n)}</button>`).join("")}</div>`;
+    qzBody.querySelectorAll(".pad button").forEach(b => b.addEventListener("click", () => {
+      if (answered) return;
+      const n = +b.dataset.n;
+      picked.has(n) ? picked.delete(n) : picked.add(n);
+      b.setAttribute("aria-pressed", String(picked.has(n)));
+    }));
+  } else {
+    const k = key(cur.v);
+    const others = shuffle(ELEMENTS.filter(e => key(e.v) !== k));
+    const used = new Set([k]), opts = [cur];
+    for (const e of others) { if (opts.length === 4) break; if (!used.has(key(e.v))) { used.add(key(e.v)); opts.push(e); } }
+    qzBody.innerHTML = `<div class="q"><div class="ask">¿Qué elemento tiene estas valencias?</div>${valsHTML(cur.v).replace('class="vals"','class="vals" style="justify-content:center"')}</div>
+      <div class="opts">${shuffle(opts).map(e => `<button type="button" data-s="${e.s}"><span class="s">${e.s}</span><span class="n">${e.n}</span></button>`).join("")}</div>`;
+    qzBody.querySelectorAll(".opts button").forEach(b => b.addEventListener("click", () => {
+      if (answered) return; answered = true;
+      const right = key(BY_SYM[b.dataset.s].v) === k;
+      qzBody.querySelectorAll(".opts button").forEach(x => { if (key(BY_SYM[x.dataset.s].v) === k) x.classList.add("right"); });
+      if (!right) b.classList.add("wrong");
+      qzFb.innerHTML = right
+        ? `<div class="feedback ok">¡Correcto! Es ${cur.s}, ${cur.n.toLowerCase()}.</div>`
+        : `<div class="feedback no">No. Eran las de ${cur.s} (${cur.n.toLowerCase()}); ${b.dataset.s} tiene:${valsHTML(BY_SYM[b.dataset.s].v)}</div>`;
+      record(cur, right); qzNext.hidden = false; qzNext.focus();
+    }));
+  }
+}
+qzCheck.addEventListener("click", () => {
+  if (answered) return;
+  if (!picked.size) { qzFb.innerHTML = `<div class="feedback no">Marca al menos una valencia antes de comprobar.</div>`; return; }
+  answered = true; qzCheck.disabled = true;
+  const want = new Set(cur.v);
+  const right = cur.v.length === picked.size && cur.v.every(n => picked.has(n));
+  qzBody.querySelectorAll(".pad button").forEach(b => {
+    const n = +b.dataset.n;
+    if (picked.has(n) && !want.has(n)) b.classList.add("wrong");
+    if (!picked.has(n) && want.has(n)) b.classList.add("miss");
+  });
+  qzFb.innerHTML = right
+    ? `<div class="feedback ok">¡Perfecto!${cur.note ? " " + cur.note + "." : ""}</div>`
+    : `<div class="feedback no">Casi. Las de ${cur.n.toLowerCase()} son:${valsHTML(cur.v)}${cur.note ? `<div class="small">${cur.note}</div>` : ""}</div>`;
+  record(cur, right); qzNext.hidden = false; qzNext.focus();
+});
+qzNext.addEventListener("click", nextQ);
+qzMode.addEventListener("change", nextQ);
+qzFilter.addEventListener("change", nextQ);
+document.getElementById("qz-reset").addEventListener("click", () => { misses = {}; saveMisses(); updateMissInfo(); });
+updateScore(); updateMissInfo(); nextQ();
+</script>
