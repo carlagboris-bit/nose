@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tema 5 · L'Enllaç Químic</title>
+<style>
+:root{--ink:#1d2433;--mute:#5b6577;--accent:#2b5fa8;--acc2:#c0392b;--ok:#1e8449;--bg:#ffffff;--box:#f3f6fb;--warn:#fff6e0;--line:#d6dde8;}
+*{box-sizing:border-box}
+body{font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);margin:0;line-height:1.42;font-size:10.5pt}
+main{max-width:860px;margin:0 auto;padding:16px}
+h1{font-size:22pt;margin:.2em 0 .1em;color:var(--accent)}
+h2{font-size:15pt;color:#fff;background:var(--accent);padding:6px 10px;border-radius:4px;margin:26px 0 10px;break-after:avoid}
+h3{font-size:12pt;color:var(--accent);border-bottom:2px solid var(--line);padding-bottom:2px;margin:18px 0 6px;break-after:avoid}
+h4{font-size:10.8pt;margin:12px 0 4px;color:var(--acc2);break-after:avoid}
+ul,ol{margin:4px 0 6px;padding-left:22px}
+li{margin:2px 0}
+p{margin:4px 0 6px}
+.box{background:var(--box);border-left:4px solid var(--accent);padding:6px 10px;margin:8px 0;border-radius:3px;break-inside:avoid}
+.key{background:#fdecea;border-left:4px solid var(--acc2);padding:6px 10px;margin:8px 0;border-radius:3px;break-inside:avoid}
+.ext{background:var(--warn);border-left:4px solid #e0a100;padding:6px 10px;margin:8px 0;border-radius:3px;break-inside:avoid}
+.ext::before{content:"➕ AMPLIACIÓ";display:block;font-weight:700;font-size:8.5pt;color:#9a6c00;letter-spacing:.05em}
+.f{font-family:"Cambria Math","Times New Roman",serif;font-size:11.5pt;text-align:center;margin:6px 0}
+table{border-collapse:collapse;margin:6px 0;font-size:9.5pt;break-inside:avoid;width:100%}
+th,td{border:1px solid var(--line);padding:3px 6px;text-align:left;vertical-align:top}
+th{background:#e6edf7}
+figure{margin:8px auto;text-align:center;break-inside:avoid}
+figure img{max-width:100%;border:1px solid var(--line);border-radius:3px}
+figcaption{font-size:8.5pt;color:var(--mute);margin-top:2px}
+.w60 img{max-width:60%}.w75 img{max-width:75%}.w45 img{max-width:45%}.w85 img{max-width:85%}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.two figure{margin:4px 0}
+@media (max-width:600px){.two{grid-template-columns:1fr}.w45 img,.w60 img{max-width:100%}}
+.toc{columns:2;font-size:9.5pt}
+.ok{color:var(--ok);font-weight:700}.no{color:var(--acc2);font-weight:700}
+code,.m{font-family:"Cambria Math","Times New Roman",serif}
+.lw{font-family:"Courier New",monospace;font-weight:700;white-space:pre;line-height:1.15;display:inline-block;text-align:left}
+svg text{font-family:"Segoe UI",Arial,sans-serif}
+@page{size:A4;margin:14mm 12mm}
+@media print{main{padding:0;max-width:none}h2{break-before:page}h2.nobreak{break-before:auto}}
+</style>
+</head>
+<body><main>
+
+<h1>Tema 5 · L'Enllaç Químic</h1>
+<p style="color:var(--mute);margin-top:0">Apunts esquemàtics · Fonaments de Química (Grau d'Enginyeria Química). Les caixes <b style="color:#9a6c00">➕ AMPLIACIÓ</b> afegeixen contingut que no és a les diapositives.</p>
+
+<div class="box toc">
+<b>Índex</b>
+<ol>
+<li>Introducció: què és l'enllaç químic</li>
+<li>Enllaç covalent (I): Teoria de Lewis</li>
+<li>Enllaç covalent (II): Geometria – VSEPR</li>
+<li>Polaritat d'enllaç i moment dipolar</li>
+<li>Tractament mecanoquàntic</li>
+<li>Teoria d'Orbitals Moleculars (OM)</li>
+<li>Enllaç iònic</li>
+<li>Enllaç metàl·lic i teoria de bandes</li>
+<li>Annex: Teoria de l'Enllaç de València i hibridació</li>
+<li>Resum final comparatiu</li>
+</ol>
+</div>
+
+<!-- ============================================================ -->
+<h2 class="nobreak">1. Introducció: l'enllaç químic</h2>
+
+<h3>1.1 Què és?</h3>
+<ul>
+<li>A la natura els àtoms gairebé mai estan aïllats → es combinen en <b>molècules</b> o <b>compostos</b> amb propietats diferents de les dels àtoms que els formen.</li>
+<li>Quan ≥ 2 àtoms (sovint molts) es mantenen a curta distància de forma <b>estable i permanent</b>, hi ha d'haver una interacció que els uneix.</li>
+<li><b>Enllaç químic</b> = la força causant d'aquesta unió. La seva existència és evident (existeixen molècules), però és difícil de definir; el tipus d'enllaç dóna propietats radicalment diferents.</li>
+</ul>
+
+<h3>1.2 Configuració de gas noble i regla de l'octet</h3>
+<ul>
+<li>Gasos nobles (grup 18): es troben com a gasos <b>monoatòmics</b>; molt estables, inerts, gairebé sense reactivitat.</li>
+<li>La seva estabilitat s'associa a la configuració <b class="m">… ns² np⁶</b> → <b>regla dels 8 electrons o de l'octet</b>.</li>
+<li>Formant compostos, els elements tendeixen a assolir configuració de gas noble:
+ <ul>
+ <li><b>Cedint i guanyant electrons</b> → elements amb electronegativitats <b>molt dispars</b> (iònic).</li>
+ <li><b>Compartint electrons</b> → elements amb electronegativitats <b>semblants</b> (covalent).</li>
+ </ul></li>
+</ul>
+
+<h3>1.3 Tipus d'enllaç (casos límit)</h3>
+<div class="two">
+<figure><img src="img/electroneg.jpg" alt="Triangle de van Arkel-Ketelaar"><figcaption>Triangle d'enllaç (van Arkel–Ketelaar): electronegativitat d'A vs de B.</figcaption></figure>
+<div>
+<table>
+<tr><th>Tipus</th><th>Mecanisme</th><th>Exemple</th></tr>
+<tr><td><b>Iònic</b></td><td>Transferència d'electrons</td><td>Cs → Cs⁺ + e⁻ ([Xe])<br>F + e⁻ → F⁻ ([Ne])</td></tr>
+<tr><td><b>Covalent</b></td><td>Compartició d'electrons</td><td>Cl₂ (Cl: [Ne]3s²3p⁵)</td></tr>
+<tr><td><b>Metàl·lic</b></td><td>Gregarització (mar) d'electrons</td><td>Na: [Ne]3s¹ → Na+Na+Na+…</td></tr>
+</table>
+<div class="key">Són <b>casos extrems</b>. Els enllaços reals són situacions intermèdies amb característiques dels tres en més o menys grau.</div>
+</div>
+</div>
+
+<div class="ext">
+<b>Criteri orientatiu amb la diferència d'electronegativitat (Pauling), Δχ:</b>
+<table>
+<tr><th>Δχ</th><th>Tipus d'enllaç</th><th>Exemple</th></tr>
+<tr><td>0 – 0,4</td><td>Covalent apolar</td><td>H₂, Cl₂, C–H</td></tr>
+<tr><td>0,4 – 1,7</td><td>Covalent polar</td><td>H–Cl (0,9), O–H (1,4)</td></tr>
+<tr><td>&gt; 1,7 (aprox.)</td><td>Predominantment iònic (&gt; 50 % caràcter iònic)</td><td>NaCl (2,1), CsF (3,3)</td></tr>
+</table>
+Si els dos elements tenen χ baixa (tots dos metalls) → enllaç metàl·lic. Caràcter iònic aproximat (Pauling): % = 100·(1 − e<sup>−(Δχ)²/4</sup>).
+</div>
+
+<!-- ============================================================ -->
+<h2>2. Enllaç covalent (I): Teoria de Lewis</h2>
+
+<h3>2.1 Context</h3>
+<ul>
+<li>Els tractaments rigorosos (mecànica quàntica) són molt complicats, tot i que permeten predir amb precisió geometries, energies d'enllaç, etc.</li>
+<li><b>Teoria de Lewis</b> (G. N. Lewis, 1916, abans de la mecànica quàntica): recull observacions <b>empíriques</b>. Teoria <b>qualitativa</b> que explica l'enllaç covalent en molècules.</li>
+<li>Concepte central: <b>electrons de valència</b>.</li>
+</ul>
+
+<h3>2.2 Electrons de valència</h3>
+<ul>
+<li>Elements dels grups principals: electrons de la capa amb <b>n més alt</b>. Es representen com a punts al voltant del símbol (notació de Lewis): nº de punts = nº de grup (en la numeració 1A–8A).</li>
+<li>Metalls de transició: la subcapa (n−1)d té energia semblant a ns → es consideren potencialment de valència tots els electrons fora de la capa tancada de gas noble anterior (inclosos els (n−1)d).</li>
+</ul>
+
+<h3>2.3 Base empírica</h3>
+<ul>
+<li>Les úniques espècies monoatòmiques en estat natural són els <b>gasos nobles</b>.</li>
+<li>Els <b>ions monoatòmics</b> també solen tenir estructura de gas noble.</li>
+<li>La capa de valència completa (ns²np⁶) sembla associada a una estabilitat especial.</li>
+</ul>
+<div class="key">"Els àtoms que formen les espècies poliatòmiques tendiran a assolir la configuració electrònica de gas noble."</div>
+
+<h3>2.4 Regla de l'octet (teoria original)</h3>
+<ol>
+<li>Els àtoms es combinen de manera que tendeixen a tenir <b>8 electrons</b> a la capa de valència (octet). L'<b>hidrogen</b> només en pot tenir <b>2</b> (duet).</li>
+<li>Una parella d'àtoms enllaçats comparteix els electrons necessaris; <b>els electrons compartits compten per a l'octet dels dos àtoms</b>.</li>
+</ol>
+<div class="two">
+<figure><img src="img/lewis_f2.jpg" alt="F2 Lewis"><figcaption>F₂: cada F (2s²2p⁵, 7 e⁻) comparteix 1 e⁻ → enllaç senzill; 3 parells lliures per F.</figcaption></figure>
+<div class="box">
+<b>Vocabulari:</b>
+<ul>
+<li><b>Parell enllaçant</b>: 2 e⁻ compartits entre dos àtoms (una línia —).</li>
+<li><b>Parell lliure / no enllaçant</b>: no intervé en l'enllaç, vinculat només a un àtom.</li>
+<li><b>Enllaç covalent senzill</b>: 1 parell compartit.</li>
+</ul>
+</div>
+</div>
+
+<h3>2.5 Enllaços múltiples</h3>
+<p>Si l'octet no es pot satisfer amb enllaços senzills, es comparteixen més parells → enllaços <b>dobles</b> (=, 4 e⁻) i <b>triples</b> (≡, 6 e⁻).</p>
+<table>
+<tr><th>Molècula</th><th>Estructura</th><th>e⁻ compartits / no compartits per àtom</th><th>Energia d'enllaç (kJ·mol⁻¹)</th><th>Distància (Å)</th></tr>
+<tr><td>CO₂</td><td>O=C=O (2 dobles, 4 parells lliures)</td><td>C: 0 + 8 · O: 4 + 4</td><td>—</td><td>—</td></tr>
+<tr><td>N₂</td><td>|N≡N| (1 triple, 2 parells lliures)</td><td>N: 2 + 6</td><td>941</td><td>1,10</td></tr>
+<tr><td>O₂</td><td>O=O (doble)</td><td>O: 4 + 4</td><td>494</td><td>1,21</td></tr>
+<tr><td>F₂</td><td>F–F (senzill)</td><td>F: 6 + 2</td><td>160</td><td>1,42</td></tr>
+</table>
+<div class="key">Més ordre d'enllaç ⇒ enllaç <b>més fort</b> (més energia) i <b>més curt</b>.</div>
+
+<h3>2.6 Notació de les estructures de Lewis</h3>
+<ul>
+<li>Electrons compartits: línies (— 2 e⁻, = 4 e⁻, ≡ 6 e⁻) → indiquen l'<b>ordre d'enllaç</b>.</li>
+<li>Parells lliures: línies posades entorn de l'àtom o dos punts.</li>
+<li>Electró desaparellat: un punt.</li>
+</ul>
+
+<h3>2.7 Procediment sistemàtic (8 passos)</h3>
+<svg viewBox="0 0 820 150" width="100%" role="img" aria-label="Esquema dels passos de Lewis">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2b5fa8"/></marker></defs>
+<g font-size="11">
+<g fill="#e6edf7" stroke="#2b5fa8">
+<rect x="5" y="10" width="185" height="50" rx="6"/><rect x="215" y="10" width="185" height="50" rx="6"/><rect x="425" y="10" width="185" height="50" rx="6"/><rect x="635" y="10" width="180" height="50" rx="6"/>
+<rect x="5" y="90" width="185" height="50" rx="6"/><rect x="215" y="90" width="185" height="50" rx="6"/><rect x="425" y="90" width="185" height="50" rx="6"/><rect x="635" y="90" width="180" height="50" rx="6"/>
+</g>
+<g fill="#1d2433" text-anchor="middle">
+<text x="97" y="31" font-weight="700">1. Comptar e⁻ de valència</text><text x="97" y="48">(± càrrega de l'ió)</text>
+<text x="307" y="31" font-weight="700">2. Esquelet</text><text x="307" y="48">àtoms centrals / terminals</text>
+<text x="517" y="31" font-weight="700">3. Enllaços senzills</text><text x="517" y="48">−2 e⁻ per enllaç</text>
+<text x="725" y="31" font-weight="700">4. Repartir e⁻ restants</text><text x="725" y="48">terminals primer</text>
+<text x="97" y="111" font-weight="700">5. Ajustar octets</text><text x="97" y="128">parells lliures → múltiples</text>
+<text x="307" y="111" font-weight="700">6. Càrregues formals</text><text x="307" y="128">Σ = càrrega total</text>
+<text x="517" y="111" font-weight="700">7. Verificar</text><text x="517" y="128">enllaços, parells, càrregues</text>
+<text x="725" y="111" font-weight="700">8. Ressonància</text><text x="725" y="128">formes equivalents</text>
+</g>
+<g stroke="#2b5fa8" stroke-width="2" marker-end="url(#ar)">
+<line x1="190" y1="35" x2="212" y2="35"/><line x1="400" y1="35" x2="422" y2="35"/><line x1="610" y1="35" x2="632" y2="35"/>
+<path d="M725 60 L725 75 L97 75 L97 87" fill="none"/>
+<line x1="190" y1="115" x2="212" y2="115"/><line x1="400" y1="115" x2="422" y2="115"/><line x1="610" y1="115" x2="632" y2="115"/>
+</g></g></svg>
+
+<h4>Pas 1 · Nombre d'electrons de valència</h4>
+<ul><li>A partir de la configuració electrònica. <b>Afegim</b> e⁻ si és anió, <b>eliminem</b> si és catió.</li></ul>
+<table>
+<tr><th>PF₃</th><th>CO₃²⁻</th><th>NO₂⁺</th></tr>
+<tr><td>P: 1×5 = 5<br>F: 3×7 = 21<br><b>Total 26</b></td><td>C: 1×4 = 4<br>O: 3×6 = 18<br>càrrega: +2<br><b>Total 24</b></td><td>N: 1×5 = 5<br>O: 2×6 = 12<br>càrrega: −1<br><b>Total 16</b></td></tr>
+</table>
+
+<h4>Pas 2 · Esquelet (connectivitat)</h4>
+<ul>
+<li><b>Àtoms centrals</b>: units a ≥ 2 àtoms. <b>Terminals</b>: units a un sol àtom.</li>
+<li>Si no hi ha referents: els <b>H</b> sempre són terminals; normalment l'àtom central és el <b>més electropositiu</b> (menys electronegatiu).</li>
+<li>⚠ En aquest punt encara NO es pot determinar la geometria; només la connectivitat.</li>
+</ul>
+
+<h4>Pas 3 · Unir amb enllaços senzills</h4>
+<p>Cada enllaç consumeix 2 e⁻: PF₃ 26−6 = <b>20</b>; CO₃²⁻ 24−6 = <b>18</b>; NO₂⁺ 16−4 = <b>12</b>.</p>
+
+<h4>Pas 4 · Afegir els electrons restants</h4>
+<p>Per parelles, començant pels <b>terminals</b> i acabant pels centrals, sense superar l'octet (estrictament només per a àtoms del 2n període). PF₃: 10 parells; CO₃²⁻: 9 parells; NO₂⁺: 6 parells.</p>
+
+<h4>Pas 5 · Ajustar octets</h4>
+<p>Si un àtom central no compleix l'octet, es desplacen <b>parells lliures</b> dels terminals cap a l'enllaç (formant enllaços múltiples) fins que tots compleixen.</p>
+<ul>
+<li>PF₃: ja tots tenen 8 e⁻ ✔.</li>
+<li>CO₃²⁻: C té 6 → un O forma doble enllaç → O=C(–O)–O ✔.</li>
+<li>NO₂⁺: N té 4 → dos dobles enllaços → O=N=O ✔.</li>
+</ul>
+
+<h4>Pas 6 · Càrregues formals (CF)</h4>
+<div class="f">CF = (e⁻ de valència de l'àtom lliure) − (e⁻ no compartits) − ½ (e⁻ compartits)</div>
+<ul>
+<li><b>Electrons compartits</b>: a cada àtom li correspon la <b>meitat</b>.</li>
+<li><b>Parells lliures i electrons desaparellats</b>: s'imputen <b>només</b> a l'àtom on són.</li>
+<li><b>Σ CF = càrrega total</b> de la molècula/ió.</li>
+</ul>
+<table>
+<tr><th>Espècie</th><th>CF</th><th>Total</th></tr>
+<tr><td>PF₃</td><td>P 0, F 0, 0, 0</td><td>0</td></tr>
+<tr><td>CO₃²⁻</td><td>C 0, O(doble) 0, O(senzills) −1, −1</td><td>−2</td></tr>
+<tr><td>NO₂⁺</td><td>O 0, N +1, O 0</td><td>+1</td></tr>
+</table>
+
+<h4>Pas 7 · Verificació</h4>
+<p>L'estructura completa ha d'indicar: els <b>enllaços</b> i el seu ordre, els <b>parells lliures</b> (i e⁻ desaparellats) i les <b>càrregues formals</b> no nul·les.</p>
+
+<h4>Pas 8 · Estructures ressonants equivalents</h4>
+<p>Cal explicitar-les per identificar quins àtoms i enllaços són equivalents; si cal, calcular CF i ordres d'enllaç efectius (vegeu 2.8).</p>
+
+<h3>2.8 Ressonància</h3>
+<ul>
+<li><b>Estructures ressonants</b>: estructures de Lewis correctes, diferents entre si, amb la <b>mateixa connectivitat</b> (només canvien els electrons). Es separen amb una fletxa senzilla de dues puntes <b>↔</b> (NO la doble fletxa d'equilibri ⇌).</li>
+<li>La molècula és un <b>híbrid de ressonància</b>: l'estructura real és una <b>superposició</b> (mescla) de les formes, no necessàriament amb el mateix pes.</li>
+<li><span class="no">NO vol dir</span> que la molècula s'estigui interconvertint d'una estructura a l'altra.</li>
+<li>Indica que <b>una sola estructura de Lewis no pot representar la molècula</b>: és una limitació per <i>expressar</i> la realitat.</li>
+</ul>
+<div class="box">
+<b>Exemple CO₃²⁻</b>: 3 formes equivalents (el doble enllaç sobre cadascun dels 3 O).<br>
+Experimentalment: els tres enllaços C–O són <b>idèntics</b>, més curts que un C–O senzill i més llargs que un C=O; els 3 O tenen la mateixa càrrega → compatible amb la superposició de les 3 formes a parts iguals.
+</div>
+<p>Per a formes ressonants <b>equivalents</b> es calculen valors promig:</p>
+<div class="f">OE̅ = Σᵢ (OE de tots els enllaços en l'estructura i / nº d'enllaços d'aquest tipus) / nº d'estructures</div>
+<div class="f">q̅ⱼ = Σᵢ (càrrega de tots els àtoms j en l'estructura i / nº d'àtoms de tipus j) / nº d'estructures</div>
+<div class="box">CO₃²⁻: a cada estructura, OE mitjà C–O = (2+1+1)/3 = 4/3 → mitjana de les 3 estructures: OE̅ = (4/3+4/3+4/3)/3 = <b>4/3</b>. Càrrega mitjana d'O a cada estructura = (0−1−1)/3 = −2/3 → q̅(O) = <b>−2/3</b>. (Ordre 4/3: més que un senzill, menys que un doble.)</div>
+
+<h3>2.9 Excepcions a la regla de l'octet</h3>
+<table>
+<tr><th>Grup</th><th>Descripció</th><th>Exemples</th></tr>
+<tr><td><b>1. Espècies radicalàries</b> (nombre senar d'e⁻)</td><td>Almenys un àtom no pot completar l'octet. Espècies <b>molt reactives</b> (l'electró desaparellat les fa reaccionar amb altres molècules).</td><td>NO₂: 5 + 2×6 = 17 e⁻ → 8 parells + 1 e⁻ desaparellat (4 formes ressonants)</td></tr>
+<tr><td><b>2. Espècies deficients en electrons</b> (valència baixa)</td><td>Àtoms centrals dels grups 2 (Be) i 13 (B): tenen pocs e⁻ propis; completar l'octet comportaria càrregues formals negatives molt elevades, desfavorable.</td><td>BeH₂: 2+2 = 4 e⁻ → H–Be–H, Be amb 4 e⁻.<br>BF₃: 3+21 = 24 e⁻ → B amb 6 e⁻ (la forma amb B=F compleix l'octet però amb CF contradictòries amb les χ).</td></tr>
+<tr><td><b>3. Capes de valència expandides</b></td><td>Àtoms centrals del 3r període o superior amb CF no nul·les: es poden formar parells d'enllaç addicionals per reduir les CF, encara que se superi l'octet.</td><td>SO₂: 6+12 = 18 e⁻. |O–S=O| (CF −1,+1) → O=S=O (CF zero, S amb 10 e⁻).</td></tr>
+</table>
+<ul>
+<li>Si no es poden aconseguir CF nul·les: millor CF d'acord amb les χ dels àtoms implicats.</li>
+<li>Els <b>àtoms terminals sempre respecten l'octet</b>.</li>
+</ul>
+<div class="ext">Exemples típics de capa expandida: PCl₅ (10 e⁻ al P), SF₆ (12 e⁻ al S), XeF₂, XeF₄, I₃⁻. Actualment s'interpreta que no impliquen orbitals d, sinó enllaços amb més caràcter iònic/deslocalitzat (enllaços 3c–4e), però el model de Lewis funciona igualment com a eina de recompte.</div>
+
+<h3>2.10 Quina estructura és la més correcta? (per ordre de prioritat)</h3>
+<ol>
+<li>Descartar les que <b>no compleixen l'octet</b> si n'hi ha que sí (compte amb grups 2 i 13). <i>CH₃N</i>: H₂C=N–H ✔ davant de H₃C–N amb N sense octet.</li>
+<li>Descartar <b>cicles de 3 membres</b> davant de lineals (molt tensionats, poc estables). <i>S₂O</i>: S=S=O ✔. (Àtoms més electropositius → centrals.)</li>
+<li>Preferir les que satisfan l'octet amb el <b>menor nombre de CF no nul·les</b>. <i>NO₂⁺</i>: O=N=O ✔ davant d'O–N≡O.</li>
+<li>Descartar les que tenen <b>àtoms adjacents amb CF del mateix signe</b> (repulsió). <i>S₂N₂</i>: estructura cíclica de 4 ✔.</li>
+<li>Descartar les que tenen <b>CF en desacord amb les χ</b> o el mateix element amb CF de signe oposat. <i>N₂O</i>: |N≡N–O| (CF negativa sobre O) ✔; N=O=N ✗ (no compleix l'octet, O central amb +).</li>
+<li>Entre isòmers, el més estable sol ser <b>el que té més estructures de ressonància</b>. <i>H₂N₂O₂</i>: la nitroamina H₂N–NO₂ ✔ davant del dímer de l'HNO.</li>
+<li>L'estructura més estable sol ser la que té la <b>suma de diferències d'electronegativitat entre àtoms enllaçats més gran</b>. <i>HOCl</i>: H–O–Cl (Σ Δχ = 1,4+0,5 = 1,9) ✔ davant H–Cl–O (1,4).</li>
+</ol>
+
+<h3>2.11 Limitacions de Lewis</h3>
+<ul>
+<li>Anterior a la mecànica quàntica; regles simples però excepcions.</li>
+<li>És bàsicament per a l'enllaç covalent.</li>
+<li>Es limita a l'<b>estructura</b> (connectivitat).</li>
+<li>No es pronuncia sobre l'<b>energia</b> de la molècula.</li>
+<li>No diu res de la <b>geometria</b> (forma). P. ex. H₂O és lineal o angular? I CO₂?</li>
+</ul>
+<div class="key">La geometria és crucial: condiciona les <b>propietats elèctriques</b> (polaritat), que afecten fases, solubilitat, reactivitat… Una d'elles (H₂O) és un líquid amb punt d'ebullició alt que dissol sals; l'altra (CO₂) un gas.</div>
+
+<!-- ============================================================ -->
+<h2>3. Enllaç covalent (II): Geometria molecular – VSEPR</h2>
+
+<h3>3.1 Idea bàsica</h3>
+<ul>
+<li><b>VSEPR</b> (<i>Valence Shell Electron Pair Repulsion</i>, en català RPECV): teoria de base <b>electrostàtica</b> per predir la geometria a partir de les estructures de Lewis. Forma actual: Nyholm i Gillespie (1957); original de Sidgwick i Powell (1940) / Tsuchida (1939).</li>
+<li>Lewis → <b>estructura</b> (connectivitat). VSEPR → <b>geometria</b> (orientació a l'espai, angles, forma global).</li>
+<li>Model: distribuir un conjunt de <b>càrregues puntuals iguals</b> sobre la superfície d'una esfera de radi r de manera que la distància entre elles sigui <b>màxima</b> (repulsió mínima).</li>
+</ul>
+<figure class="w85"><img src="img/vsepr_esferes.jpg" alt="Distribucions de 2 a 6 càrregues"><figcaption>2 → línia (180°); 3 → triangle equilàter (120°); 4 → tetraedre (109,5°); 5 → bipiràmide trigonal (90°, 120°); 6 → octaedre (90°).</figcaption></figure>
+<div class="key">"La geometria més probable serà la que minimitzi les repulsions entre els <b>parells d'electrons de valència de l'àtom central</b>." Els parells es tracten com a càrregues elèctriques puntuals.</div>
+<ul>
+<li>Un enllaç = 2 e⁻ (un parell). Un parell lliure també és un parell.</li>
+<li>Els <b>enllaços múltiples compten com un únic parell</b> (els e⁻ no es poden separar: enllacen els mateixos àtoms).</li>
+</ul>
+
+<h3>3.2 Nombre estèric</h3>
+<div class="f">Nombre estèric de l'àtom central A = n + m</div>
+<ul><li><b>n</b> = nº d'enllaços (simples o múltiples, cadascun compta 1) → «X». <b>m</b> = nº de parells lliures → «E».</li></ul>
+<table>
+<tr><th>Molècula</th><th>PF₃</th><th>NO₂⁺</th><th>N₂O</th><th>CO₃²⁻</th></tr>
+<tr><td>Nombre estèric (n+m)</td><td>4</td><td>2</td><td>2</td><td>3</td></tr>
+<tr><td>Enllaços (n)</td><td>3</td><td>2</td><td>2</td><td>3</td></tr>
+<tr><td>Parells lliures (m)</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+</table>
+<p>Dues situacions: àtom central <b>sense</b> parells lliures (AXₙ) i <b>amb</b> parells lliures (AXₙEₘ).</p>
+
+<h3>3.3 Molècules AXₙ (sense parells lliures)</h3>
+<table>
+<tr><th>Tipus</th><th>Geometria</th><th>Angle</th><th>Exemples</th></tr>
+<tr><td>AX₂</td><td>lineal</td><td>180°</td><td>BeF₂, HgCl₂, CO₂</td></tr>
+<tr><td>AX₃</td><td>triangular plana (trigonal)</td><td>120°</td><td>BF₃, BCl₃, CO₃²⁻</td></tr>
+<tr><td>AX₄</td><td>tetraèdrica</td><td>109,5°</td><td>CH₄, SiCl₄</td></tr>
+<tr><td>AX₅</td><td>bipiràmide trigonal</td><td>90° (ax–eq), 120° (eq–eq)</td><td>PF₅, PF₃Cl₂</td></tr>
+<tr><td>AX₆</td><td>octaèdrica</td><td>90°</td><td>SF₆</td></tr>
+</table>
+
+<h3>3.4 Molècules AXₙEₘ (amb parells lliures)</h3>
+<ul>
+<li>Els parells lliures són zones d'alta densitat electrònica <b>més localitzades a prop del nucli</b> → repulsen més.</li>
+</ul>
+<div class="f">Repulsió(X–X) &lt; Repulsió(X–E) &lt; Repulsió(E–E)</div>
+<p>(X = enllaç; E = parell lliure. Els parells enllaçants estan compartits entre dos nuclis, no un sol, i per això són menys voluminosos.)</p>
+<p><b>Procediment:</b></p>
+<ol>
+<li>Determinar la <b>geometria bàsica</b> per a n+m parells.</li>
+<li>Distribuir enllaços i parells lliures tenint en compte la intensitat de repulsió.</li>
+<li>La <b>geometria derivada</b> és la que s'observa (només es veuen els àtoms, no els parells lliures).</li>
+</ol>
+<p>Per la repulsió diferent, els angles d'enllaç difereixen dels originals.</p>
+
+<div class="two">
+<figure><img src="img/vsepr_ax2_ax3.jpg" alt="n+m=2,3"><figcaption>n+m = 2 i 3 (SnCl₂: angular).</figcaption></figure>
+<figure><img src="img/vsepr_4.jpg" alt="n+m=4"><figcaption>n+m = 4: CH₄ tetraèdrica, NH₃ piràmide trigonal (107°), H₂O angular (104,5°).</figcaption></figure>
+<figure><img src="img/vsepr_5.jpg" alt="n+m=5"><figcaption>n+m = 5: PF₅, SF₄ (balancí), ClF₃ (forma de T), ICl₂⁻ (lineal).</figcaption></figure>
+<figure><img src="img/vsepr_6.jpg" alt="n+m=6"><figcaption>n+m = 6: SF₆, BrF₅ (piràmide base quadrada), BrF₄⁻ (pla quadrat).</figcaption></figure>
+</div>
+
+<h4>El cas AX₄E (balancí / sella de muntar)</h4>
+<figure class="w75"><img src="img/vsepr_seesaw.jpg" alt="AX4E"><figcaption>Parell lliure en posició equatorial: 2 interaccions X–E a 90° (afavorida) vs. axial: 3 interaccions X–E a 90° (desfavorida).</figcaption></figure>
+<div class="key">A la bipiràmide trigonal, els parells lliures ocupen sempre posicions <b>equatorials</b> (menys veïns a 90°). A l'octaedre, el segon parell lliure se situa <b>oposat</b> (trans) al primer.</div>
+
+<h3>3.5 Resum de geometries VSEPR</h3>
+<table>
+<tr><th>n+m</th><th>Geometria bàsica</th><th>AXₙEₘ → Geometria derivada (exemple)</th></tr>
+<tr><td>2</td><td>lineal</td><td>AX₂ lineal (CO₂)</td></tr>
+<tr><td>3</td><td>trigonal plana</td><td>AX₃ trigonal plana (BF₃) · AX₂E angular (SnCl₂, SO₂, O₃)</td></tr>
+<tr><td>4</td><td>tetraèdrica</td><td>AX₄ tetraèdrica (CH₄) · AX₃E piràmide trigonal (NH₃) · AX₂E₂ angular (H₂O) · AXE₃ lineal (HF)</td></tr>
+<tr><td>5</td><td>bipiràmide trigonal</td><td>AX₅ bipiràmide trigonal (PF₅) · AX₄E balancí (SF₄) · AX₃E₂ forma de T (ClF₃) · AX₂E₃ lineal (ICl₂⁻, XeF₂)</td></tr>
+<tr><td>6</td><td>octaèdrica</td><td>AX₆ octaèdrica (SF₆) · AX₅E piràmide base quadrada (BrF₅) · AX₄E₂ pla quadrat (BrF₄⁻, XeF₄) · AX₃E₃ forma de T · AX₂E₄ lineal</td></tr>
+</table>
+<p>(Cas trivial: n+m = 1 → AXE₀, sempre lineal.)</p>
+
+<h3>3.6 Distorsions de la geometria</h3>
+<ul>
+<li>Si hi ha parells no enllaçants, la seva repulsió amb els enllaçants no és igual que la que exerceixen els enllaçants entre si.</li>
+<li>Si els enllaços de l'àtom central no són iguals (àtoms diferents o enllaços múltiples), també es distorsiona.</li>
+</ul>
+<div class="key">Ordre de repulsió: <b>parells lliures &gt; enllaços triples &gt; enllaços dobles &gt; àtoms amb radi atòmic més gran</b> (&gt; enllaços senzills)</div>
+<figure class="w85"><img src="img/vsepr_distorsions.jpg" alt="Distorsions"><figcaption>CH₂O: H–C–H 116°, O=C–H 122° (el doble enllaç repel més). SnCl₂: 95°. NH₃/NF₃ &lt; 109,5°. BrF₅: F axial inclinat.</figcaption></figure>
+<div class="ext">Tendència: CH₄ 109,5° → NH₃ 107° → H₂O 104,5° (cada parell lliure comprimeix més els angles). En baixar al grup: H₂S 92°, PH₃ 93,5° (àtom central gran i menys electronegatiu → angles propers a 90°).</div>
+
+<!-- ============================================================ -->
+<h2>4. Polaritat d'enllaç i moment dipolar</h2>
+<ul>
+<li>Iònic (intercanvi net d'e⁻) i covalent (compartició simètrica) són límits ideals; la realitat sovint és intermèdia.</li>
+<li>Si els àtoms tenen <b>electronegativitats diferents</b>, la compartició <b>no és simètrica</b>: la densitat electrònica és atreta pel més electronegatiu → <b>enllaç covalent polar</b>.
+ <ul><li>Element més electronegatiu (B): excés de càrrega negativa <b>δ−</b>.</li><li>Element més electropositiu (A): excés equivalent positiu <b>δ+</b>.</li></ul></li>
+</ul>
+<figure class="w75"><img src="img/dipol.jpg" alt="Moment dipolar"><figcaption>χ(B) &gt; χ(A). Moment dipolar μ = q·r, amb q = |δ+| = |δ−|.</figcaption></figure>
+<ul>
+<li><b>Moment dipolar (μ)</b>: quantifica el camp elèctric de dues càrregues iguals i de signe oposat a distància r. μ = 0 → enllaç apolar (e⁻ compartits simètricament). Com més gran μ, més asimètric.</li>
+<li>Unitat: <b>Debye</b>, 1 D = 3,33564·10⁻³⁰ C·m.</li>
+<li>En una molècula, el μ total és la <b>suma vectorial</b> dels moments de cada enllaç. Convenció de la diapositiva: el vector uneix les càrregues i apunta cap a la <b>positiva</b> (en química sovint es dibuixa al revés, cap a δ−; cal fixar-se en el conveni).</li>
+<li>Pot haver-hi molècules <b>apolars amb enllaços polars</b>, per <b>simetria</b>.</li>
+</ul>
+<div class="two">
+<figure><img src="img/dipol_mol1.jpg" alt="CH2O i butà"><figcaption>CH₂O polar (μ = 2,3 D); butà apolar (μ ≈ 0).</figcaption></figure>
+<figure><img src="img/dipol_mol2.jpg" alt="CO2 i dicloroetens"><figcaption>CO₂ apolar (0 D); 1,2-Z-dicloroetè polar (1,9 D); 1,2-E-dicloroetè apolar (0 D).</figcaption></figure>
+</div>
+<div class="key">μ ≠ 0 té conseqüències importants en solubilitat, temperatures de canvi de fase i reactivitat.</div>
+<div class="ext">Regla pràctica: AXₙ amb tots els X iguals i geometria simètrica (lineal, trigonal plana, tetraèdrica, bipiràmide, octaedre, pla quadrat, lineal AX₂E₃) → <b>apolar</b>. Amb parells lliures que trenquen la simetria (NH₃, H₂O, SO₂, SF₄) o amb X diferents (CH₂Cl₂) → <b>polar</b>. Així resolem la pregunta: H₂O és angular → polar (μ = 1,85 D); CO₂ és lineal → apolar.</div>
+
+<h3>Limitacions de Lewis + VSEPR</h3>
+<p>Descriuen ràpidament estructura i geometria de molècules discretes, però:</p>
+<ul>
+<li>No diuen res de l'<b>enllaç metàl·lic</b> (ni massa de l'iònic).</li>
+<li>No diuen res de l'<b>energètica</b> dels enllaços.</li>
+<li>Problemes amb <b>molècules radicalàries</b>: O₂ es prediu amb tots els e⁻ aparellats, però té <b>dos e⁻ desaparellats</b> i és <b>paramagnètic</b>.</li>
+<li>No expliquen molts modes d'enllaç: diborà B₂H₆ (ponts B–H–B), química inorgànica, organometàl·lica…</li>
+<li>No expliquen que el <b>ciclobutadiè sigui inestable</b> mentre que el benzè és molt estable.</li>
+</ul>
+<div class="key">Cal una teoria <b>quantitativa</b>: la mecànica quàntica.</div>
+
+<!-- ============================================================ -->
+<h2>5. Tractament mecanoquàntic de l'enllaç</h2>
+<ul>
+<li><b>Aproximació de Born–Oppenheimer</b>: els nuclis es consideren quiets (molt més massius que els e⁻).</li>
+<li>Hamiltonià electrònic: Ĥ<sub>el</sub> = T̂<sub>e</sub> + V̂<sub>Ne</sub> + V̂<sub>ee</sub></li>
+</ul>
+<div class="f">Ĥ<sub>el</sub> = −(ħ²/2mₑ) Σᵢ ∇ᵢ² − Σᵢ Σ<sub>α</sub> e²Z<sub>α</sub>/(4πε₀r<sub>iα</sub>) + Σᵢ Σ<sub>j&gt;i</sub> e²/(4πε₀r<sub>ij</sub>) &nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp; Ĥ<sub>el</sub>ψ<sub>el</sub> = E<sub>el</sub>ψ<sub>el</sub></div>
+<p style="font-size:9pt;color:var(--mute);text-align:center">energia cinètica dels e⁻ · atracció e⁻–nucli · repulsió e⁻–e⁻</p>
+<ul>
+<li><b>Funció d'ona</b> electrònica → distribució dels e⁻ respecte els nuclis → origen físic de l'enllaç i dels seus tipus.</li>
+<li><b>Energies</b> electròniques → comparades amb les dels àtoms lliures donen l'energia d'enllaç (energia per trencar-los).</li>
+</ul>
+<div class="key">L'equació de Schrödinger d'una molècula <b>no té solució analítica</b> → mètodes aproximats.</div>
+
+<h3>Dues grans teories</h3>
+<div class="two">
+<div>
+<table>
+<tr><th>Enllaç de València (EV)</th><th>Orbitals Moleculars (OM)</th></tr>
+<tr><td>Enllaç = <b>recobriment</b> d'orbitals atòmics <b>monoocupats</b> dels dos àtoms que s'enllacen.</td><td>Els orbitals atòmics de <b>tots</b> els àtoms es combinen i generen orbitals moleculars, que s'ocupen per ordre creixent d'energia.</td></tr>
+<tr><td>Enllaços <b>localitzats</b> entre dos àtoms.</td><td>OM <b>deslocalitzats</b> sobre tota la molècula.</td></tr>
+</table>
+</div>
+<figure class="w60"><img src="img/ev_om.jpg" alt="EV vs OM"></figure>
+</div>
+
+<!-- ============================================================ -->
+<h2>6. Teoria d'Orbitals Moleculars (OM)</h2>
+
+<h3>6.1 Concepte</h3>
+<ul>
+<li>Extensió del que s'ha fet per a àtoms polielectrònics: la solució s'expressa en funcions d'ona d'un sol e⁻, ara <b>orbitals moleculars</b>, deslocalitzats sobre tota la molècula.</li>
+<li><b>OM</b>: funció d'ona monoelectrònica que descriu l'estat d'un únic e⁻ dins la molècula.</li>
+<li>|φ|² = densitat de probabilitat de trobar l'electró en un punt de l'espai (igual que els OA).</li>
+</ul>
+
+<h3>6.2 Aproximació CLOA (combinació lineal d'orbitals atòmics)</h3>
+<div class="f">φᵢ = Σ<sub>j=1</sub><sup>N<sub>OA</sub></sup> c<sub>ij</sub> ψⱼ</div>
+<p style="text-align:center;font-size:9pt">φᵢ = OM i-èssim · ψⱼ = OA j · c<sub>ij</sub> = pes de l'OA j en l'OM i · N<sub>OA</sub> = total d'OA de la molècula</p>
+<ul>
+<li>La combinació de <b>n OA</b> dóna <b>n OM</b> linealment independents.</li>
+<li>Només es poden combinar OA que tinguin: <b>energies semblants</b> i <b>simetria adequada</b>.</li>
+</ul>
+
+<h3>6.3 El cas més simple: H₂</h3>
+<p>Àtoms A i B amb un OA cadascun (1s<sub>A</sub>, 1s<sub>B</sub>) → 2 OM:</p>
+<ul>
+<li><b>φ₁ = 1s<sub>A</sub> + 1s<sub>B</sub></b> (σ<sub>1s</sub>, <span class="ok">enllaçant</span>): densitat <b>més gran</b> entre els nuclis que en àtoms independents → estabilització.</li>
+<li><b>φ₂ = 1s<sub>A</sub> − 1s<sub>B</sub></b> (σ*<sub>1s</sub>, <span class="no">antienllaçant</span>): densitat <b>més petita</b> entre nuclis, amb un <b>pla nodal</b> → desestabilització.</li>
+</ul>
+<div class="two">
+<figure><img src="img/h2_diag.jpg" alt="H2 OM"><figcaption>Formació dels OM de H₂ (σ i σ*), densitat de probabilitat i diagrama d'energia.</figcaption></figure>
+<figure><img src="img/h2_om.jpg" alt="Diagrama H2"><figcaption>H₂: |ΔE| &lt; |ΔE*| (l'antienllaçant desestabilitza més que no estabilitza l'enllaçant). Configuració (σ₁ₛ)², OE = 1.</figcaption></figure>
+</div>
+
+<h3>6.4 Regles qualitatives per construir OM</h3>
+<ol>
+<li>Nº d'OM obtinguts = nº d'OA inclosos a la CLOA.</li>
+<li>Els OM <b>enllaçants</b> són més estables que els OA que els generen; els <b>antienllaçants</b>, més inestables.</li>
+<li>Com més superfícies nodals perpendiculars a l'eix, més energètic (inestable) és l'OM.</li>
+<li>La intensitat de la interacció (energia d'estabilització/desestabilització) <b>augmenta</b> (1) com més semblants són les energies dels OA i (2) com més gran és el seu <b>solapament</b>. OA de diferent simetria → solapament zero → no es barregen.</li>
+</ol>
+<div class="f">Solapament: S<sub>ij</sub> = ∫ dτ ψᵢ* ψⱼ</div>
+
+<h3>6.5 Ocupació i ordre d'enllaç</h3>
+<ul>
+<li>S'omplen els OM amb els e⁻ dels àtoms, començant pels <b>més estables</b>, seguint el <b>principi d'exclusió de Pauli</b> (màx. 2 e⁻ per OM, spins oposats) i la <b>regla de Hund</b> (màxima multiplicitat en OM degenerats).</li>
+<li>Configuració electrònica: igual que en àtoms, amb la nomenclatura dels OM.</li>
+</ul>
+<div class="f">OE = ½ (nº e⁻ en OM enllaçants − nº e⁻ en OM antienllaçants)</div>
+<p>Com més gran l'OE, més fort l'enllaç. <b>OE = 0 → no hi ha enllaç</b>. (L'OE pot ser fraccionari.)</p>
+
+<h3>6.6 Diatòmiques del 1r període</h3>
+<figure class="w85"><img src="img/periode1.jpg" alt="H2+ H2 He2+ He2"></figure>
+<table>
+<tr><th>Espècie</th><th>Configuració</th><th>OE</th><th>Rₑ (Å)</th><th>Dₑ (eV)</th></tr>
+<tr><td>H₂⁺</td><td>(σ₁ₛ)¹</td><td>0,5</td><td>1,06</td><td>2,79</td></tr>
+<tr><td>H₂</td><td>(σ₁ₛ)²</td><td>1,0</td><td>0,74</td><td>4,75</td></tr>
+<tr><td>He₂⁺</td><td>(σ₁ₛ)²(σ*₁ₛ)¹</td><td>0,5</td><td>1,08</td><td>2,5</td></tr>
+<tr><td>He₂</td><td>(σ₁ₛ)²(σ*₁ₛ)²</td><td>0,0</td><td>— (no existeix)</td><td>≈ 0</td></tr>
+</table>
+<p>Les dades experimentals confirmen: OE més gran → enllaç més curt i més fort.</p>
+
+<h3>6.7 Tipus d'OM segons la simetria</h3>
+<table>
+<tr><th>Tipus</th><th>Característica</th><th>Combinacions</th><th>Degeneració</th></tr>
+<tr><td><b>σ</b></td><td>Simetria de revolució (cilíndrica) entorn de l'eix d'enllaç. <b>Cap superfície nodal que contingui l'eix.</b> Solapament gran.</td><td>s+s, s+p<sub>z</sub>, p<sub>z</sub>+p<sub>z</sub>, d<sub>z²</sub>+p<sub>z</sub></td><td>1</td></tr>
+<tr><td><b>π</b></td><td><b>Una superfície nodal que conté l'eix.</b> Solapament menor que σ.</td><td>p<sub>x</sub>+p<sub>x</sub>, p<sub>y</sub>+p<sub>y</sub>, d<sub>xz</sub>+p<sub>x</sub></td><td>2 (π<sub>x</sub>, π<sub>y</sub>)</td></tr>
+<tr><td><b>δ</b></td><td><b>Dues superfícies nodals</b> que contenen l'eix. Solapament menor que π.</td><td>d<sub>x²−y²</sub>+d<sub>x²−y²</sub>, d<sub>xy</sub>+d<sub>xy</sub></td><td>2</td></tr>
+</table>
+<p>Cada tipus té la seva versió antienllaçant (σ*, π*, δ*) amb un pla nodal addicional perpendicular a l'eix.</p>
+<div class="two">
+<figure><img src="img/sigma.jpg" alt="sigma"><figcaption>OM σ enllaçants i σ* antienllaçants.</figcaption></figure>
+<figure><img src="img/pi.jpg" alt="pi"><figcaption>OM π i π*.</figcaption></figure>
+<figure><img src="img/delta.jpg" alt="delta"><figcaption>OM δ i δ*.</figcaption></figure>
+<figure class="w75"><img src="img/incompat.jpg" alt="Simetries incompatibles"><figcaption>Simetries incompatibles: recobriment nul → no formen OM (s+pₓ, s+p<sub>y</sub>, p<sub>z</sub>+pₓ, pₓ+p<sub>z</sub>).</figcaption></figure>
+</div>
+<p><b>Recobriment nul</b>: l'orbital s té recobriment nul amb p o d dirigits perpendicularment a l'eix intermolecular; els orbitals p només recobreixen amb p de la <b>mateixa orientació</b>.</p>
+<div class="f">S(σ) &gt; S(π) &gt; S(δ) &gt; …</div>
+
+<h3>6.8 Diatòmiques homonuclears del 2n període (A₂)</h3>
+<ul>
+<li>Ara hi ha OA 2s i 2p. Els <b>1s</b> (completament plens a partir d'He) <b>no contribueixen</b> a l'enllaç (σ₁ₛ i σ*₁ₛ plens es cancel·len). En períodes superiors només es consideren ns i np (valència).</li>
+<li>Factors: <b>energia</b> dels OA (si no són degenerats, l'OM enllaçant s'assembla més al de més estabilitat i l'antienllaçant al menys estable) i <b>solapament</b>.</li>
+<li>8 OA (2s, 2p<sub>x</sub>, 2p<sub>y</sub>, 2p<sub>z</sub> × 2) → <b>8 OM</b>:
+ <ul><li>2s (×2) i 2p<sub>z</sub> (×2) → 4 OM σ: σ<sub>2s</sub>, σ*<sub>2s</sub>, σ<sub>2p<sub>z</sub></sub>, σ*<sub>2p<sub>z</sub></sub></li>
+ <li>2p<sub>x</sub> i 2p<sub>y</sub> (×2) → 4 OM π: π<sub>2p</sub> (×2 degenerats), π*<sub>2p</sub> (×2)</li></ul></li>
+</ul>
+<figure class="w85"><img src="img/oa8.jpg" alt="8 OM"></figure>
+
+<div class="two">
+<div>
+<h4>Diagrama (I): O₂, F₂, Ne₂ (Z ≥ 8)</h4>
+<p>E(1s) ≪ E(2s) ≪ E(2p) → només interaccionen OA del mateix tipus. Com que S(π) &lt; S(σ): π<sub>2p</sub> menys estables que σ<sub>2p</sub>, π* més estables que σ*.</p>
+<p><b>Ordre:</b> σ<sub>2s</sub> &lt; σ*<sub>2s</sub> &lt; <b>σ<sub>2p</sub> &lt; π<sub>2p</sub></b> &lt; π*<sub>2p</sub> &lt; σ*<sub>2p</sub></p>
+<figure class="w75"><img src="img/a2_I.jpg" alt="Diagrama A2 I"></figure>
+</div>
+<div>
+<h4>Diagrama (II): Li₂ … N₂ (Z &lt; 8)</h4>
+<p>E(2s) ≲ E(2p) (no tan separats) → <b>interacció (mescla) s–p</b>: els OA 2s i 2p<sub>z</sub> interaccionen i σ<sub>2p</sub> puja <b>per sobre</b> dels π<sub>2p</sub>.</p>
+<p><b>Ordre:</b> σ<sub>2s</sub> &lt; σ*<sub>2s</sub> &lt; <b>π<sub>2p</sub> &lt; σ<sub>2p</sub></b> &lt; π*<sub>2p</sub> &lt; σ*<sub>2p</sub></p>
+<figure class="w75"><img src="img/a2_II.jpg" alt="Diagrama A2 II"></figure>
+</div>
+</div>
+
+<h4>Exemples</h4>
+<div class="two">
+<figure><img src="img/li2.jpg" alt="Li2"><figcaption><b>Li₂</b>: 6 e⁻ (2 de valència). (σ₁ₛ)²(σ*₁ₛ)²(σ₂ₛ)². OE = 1. Singlet, <b>diamagnètica</b>.</figcaption></figure>
+<figure><img src="img/n2.jpg" alt="N2"><figcaption><b>N₂</b>: 14 e⁻ (10 de valència). (σ₂ₛ)²(σ*₂ₛ)²(π₂ₚ)⁴(σ₂ₚ)². OE = 3. Singlet, <b>diamagnètica</b>.</figcaption></figure>
+<figure><img src="img/o2.jpg" alt="O2"><figcaption><b>O₂</b>: 16 e⁻ (12 de valència). (σ₂ₛ)²(σ*₂ₛ)²(σ₂ₚ)²(π₂ₚ)⁴(π*₂ₚ)². OE = 2. <b>Triplet, paramagnètica</b> (2 e⁻ desaparellats als π* per Hund). L'O₂ líquid queda retingut entre els pols d'un imant!</figcaption></figure>
+<figure><img src="img/empiric.jpg" alt="Evidència empírica"><figcaption>Evidència empírica: diagrames Li₂–Ne₂.</figcaption></figure>
+</div>
+<div class="key">La teoria OM explica el <b>paramagnetisme de l'O₂</b>, cosa que Lewis no podia fer.</div>
+
+<div class="ext">
+<b>Taula completa de diatòmiques del 2n període</b> (configuració de valència):
+<table>
+<tr><th>Molècula</th><th>Configuració de valència</th><th>OE</th><th>Magnetisme</th><th>Energia d'enllaç (kJ/mol)</th><th>Distància (Å)</th></tr>
+<tr><td>Li₂</td><td>(σ₂ₛ)²</td><td>1</td><td>dia</td><td>105</td><td>2,67</td></tr>
+<tr><td>Be₂</td><td>(σ₂ₛ)²(σ*₂ₛ)²</td><td>0</td><td>—</td><td>≈ 0 (no estable)</td><td>—</td></tr>
+<tr><td>B₂</td><td>(σ₂ₛ)²(σ*₂ₛ)²(π₂ₚ)²</td><td>1</td><td><b>para</b></td><td>290</td><td>1,59</td></tr>
+<tr><td>C₂</td><td>(σ₂ₛ)²(σ*₂ₛ)²(π₂ₚ)⁴</td><td>2</td><td>dia</td><td>620</td><td>1,24</td></tr>
+<tr><td>N₂</td><td>(σ₂ₛ)²(σ*₂ₛ)²(π₂ₚ)⁴(σ₂ₚ)²</td><td>3</td><td>dia</td><td>941</td><td>1,10</td></tr>
+<tr><td>O₂</td><td>(σ₂ₛ)²(σ*₂ₛ)²(σ₂ₚ)²(π₂ₚ)⁴(π*₂ₚ)²</td><td>2</td><td><b>para</b></td><td>494</td><td>1,21</td></tr>
+<tr><td>F₂</td><td>… (π*₂ₚ)⁴</td><td>1</td><td>dia</td><td>160</td><td>1,42</td></tr>
+<tr><td>Ne₂</td><td>… (π*₂ₚ)⁴(σ*₂ₚ)²</td><td>0</td><td>—</td><td>≈ 0 (no existeix)</td><td>—</td></tr>
+</table>
+<b>Truc ràpid per a ions</b>: O₂⁺ (OE 2,5), O₂⁻ superòxid (OE 1,5), O₂²⁻ peròxid (OE 1). Treure e⁻ d'un OM antienllaçant <b>enforteix</b> l'enllaç; afegir-ne l'afebleix. B₂ paramagnètica és la prova experimental de la mescla s–p (amb l'ordre I seria diamagnètica).
+</div>
+
+<h3>6.9 Diatòmiques heteronuclears del 2n període (AB)</h3>
+<ul>
+<li>Mateixos principis que A₂, però els OA dels dos àtoms <b>no tenen la mateixa energia</b>.</li>
+<li>Els OA de l'àtom <b>més electronegatiu</b> (B) són <b>més baixos en energia</b>.
+ <ol><li>Els OM <b>enllaçants</b> s'assemblen més als OA de l'àtom <b>més electronegatiu</b> (coeficient/pes més gran); els <b>antienllaçants</b>, a l'àtom <b>més electropositiu</b>.</li>
+ <li>El 2s de l'àtom més electropositiu és a prop del 2p del més electronegatiu → <b>el diagrama OM sempre té els orbitals π<sub>2p</sub> per sota del σ<sub>2p</sub></b> (tipus II).</li></ol></li>
+</ul>
+<div class="two">
+<figure><img src="img/ab_II.jpg" alt="AB pesos"><figcaption>Forma dels OM en AB: lòbuls desiguals segons l'electronegativitat.</figcaption></figure>
+<figure><img src="img/co.jpg" alt="CO"><figcaption><b>CO</b>: 14 e⁻ (10 de valència), isoelectrònic amb N₂. (σ₂ₛ)²(σ*₂ₛ)²(π₂ₚ)⁴(σ₂ₚ)². OE = 3. Singlet, diamagnètica.</figcaption></figure>
+</div>
+
+<h4>Heteronuclears amb hidrogen: HF</h4>
+<figure class="w60"><img src="img/hf.jpg" alt="HF"></figure>
+<ul>
+<li>L'orbital 1s(H) té energia més alta que la majoria del F → interaccionarà amb orbitals del nivell n = 2.</li>
+<li>Del F: <b>2p<sub>x</sub> i 2p<sub>y</sub></b> no es poden combinar per simetria amb 1s(H) → queden iguals, sobre el F: <b>no enllaçants</b> ("parells lliures").</li>
+<li>Poden interaccionar 1s(H), 2s(F) i 2p<sub>z</sub>(F) → 3 OM:
+ <ul><li>un pràcticament idèntic al 2s(F): σ<sub>2s</sub> (gairebé no enllaçant),</li><li>un d'intermedi entre 1s(H) i 2p<sub>z</sub>(F): σ<sub>2p</sub> (enllaçant),</li><li>un de més inestable, majoritàriament antienllaçant 2p<sub>z</sub>(F)–1s(H): σ*<sub>2p</sub>.</li></ul></li>
+<li>Conf.: (σ₁ₛ)²(σ₂ₛ)²(σ₂ₚ)²(π<sub>nb</sub>)⁴ → <b>OE = 1</b>. Els e⁻ interns (1s, 2s del F) no participen.</li>
+</ul>
+
+<h3>6.10 Molècules poliatòmiques</h3>
+<ul>
+<li>Els principis són els mateixos: interaccionen OA (o combinacions dels mateixos) amb la mateixa simetria i energia semblant.</li>
+<li>Degut a la variabilitat de geometria, es fa complicat sense ajut d'ordinadors.</li>
+<li>La teoria OM és la teoria d'elecció en química teòrica i computacional.</li>
+</ul>
+<figure class="w45"><img src="img/poliat.jpg" alt="CH4 OM"><figcaption>OM calculats d'una molècula poliatòmica (CH₄).</figcaption></figure>
+
+<!-- ============================================================ -->
+<h2>7. Enllaç iònic</h2>
+
+<h3>7.1 Visió OM: LiF (Δχ molt gran)</h3>
+<div class="two">
+<figure><img src="img/lif.jpg" alt="LiF"></figure>
+<div>
+<ul>
+<li>Cas extrem d'AB: l'element electropositiu (Li) té els OA de valència ocupats (2s) <b>per sobre</b> dels de l'electronegatiu (2p del F).</li>
+<li>Hi ha 6 e⁻ en 3 OM <b>no enllaçants</b> sobre el F.</li>
+<li>Només un parell enllaçant a l'OM σ<sub>2p</sub>, amb <b>molta contribució del F</b>.</li>
+<li>Els OA 1s(Li) i 2s(F) són molt estables (no interaccionen).</li>
+<li>→ Els 2 e⁻ estan bàsicament sobre el fluor: <b>"Li⁺ + F⁻"</b>.</li>
+</ul>
+</div>
+</div>
+
+<h3>7.2 Visió de Lewis</h3>
+<ul>
+<li>Li + F → Li⁺ + F⁻: Li cedeix el seu e⁻ i F l'accepta. Tots dos assoleixen octet/duet (F → [Ne], Li⁺ → [He]). No hi ha compartició.</li>
+<li>La transferència crea espècies carregades: <b>ions</b>. Cada ió és estable (capa completa), però amb càrrega → interaccions coulòmbiques:</li>
+</ul>
+<div class="f">U(d) = (1/4πε₀) · q₊q₋ / d</div>
+<ul>
+<li>Càrregues oposades → U negativa; més negativa com més petita d. Els ions de signe contrari són més estables junts.</li>
+<li>Problema: lim<sub>d→0</sub> U(d) = −∞ ⇒ col·lapse?!</li>
+</ul>
+
+<h3>7.3 Potencial de Born</h3>
+<p>No oblidar que cations i anions tenen <b>electrons interns</b> (Li⁺: 1s²): si s'acosten indefinidament, apareix <b>repulsió</b> entre els núvols electrònics.</p>
+<div class="two">
+<figure><img src="img/born.jpg" alt="Potencial de Born"></figure>
+<div>
+<div class="f">U<sub>total</sub>(d) = U<sub>atractiu</sub>(d) + U<sub>repulsiu</sub>(d)</div>
+<div class="f">U<sub>atr</sub> = −(1/4πε₀)·|z₊||z₋|e²/d &nbsp;&nbsp; U<sub>rep</sub> = B/dⁿ</div>
+<ul>
+<li>El terme coulòmbic és de llarg abast; el repulsiu (Born) és de curt abast.</li>
+<li>U<sub>total</sub> té un <b>mínim</b>: la distància d<sub>eq</sub> és la distància òptima entre anió i catió.</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>Per un parell aïllat: situació en què el parell és òptimament estable a una distància donada, més que separats a ∞ → "enllaç iònic", equilibri entre atracció coulòmbica catió–anió i repulsió entre electrons interns.</li>
+<li>En general els compostos iònics són <b>sòlids</b> (xarxes ordenades de cations i anions): interaccions atractives entre ions de signe contrari i repulsives entre ions del mateix signe (més llunyans).</li>
+<li><b>La intensitat d'aquestes interaccions depèn de l'estructura del sòlid.</b></li>
+</ul>
+<div class="ext">
+<b>Energia reticular (equació de Born–Landé):</b> U = −(N<sub>A</sub> M |z₊z₋| e² / 4πε₀ d₀)·(1 − 1/n), on M és la <b>constant de Madelung</b> (depèn de l'estructura: NaCl 1,748; CsCl 1,763; ZnS 1,638) i n l'exponent de Born (5–12).<br>
+Conseqüències: més càrrega i ions més petits → energia reticular més gran → <b>punt de fusió més alt</b> i més duresa (MgO ≫ NaCl).<br>
+<b>Propietats dels sòlids iònics</b>: durs però <b>fràgils</b> (un desplaçament enfronta ions del mateix signe), alts punts de fusió, aïllants en estat sòlid però <b>conductors fosos o en dissolució</b>, sovint solubles en dissolvents polars (aigua).<br>
+L'energia de formació es pot calcular amb el <b>cicle de Born–Haber</b> (sublimació + ionització + dissociació + afinitat electrònica + energia reticular).
+</div>
+
+<!-- ============================================================ -->
+<h2>8. Enllaç metàl·lic</h2>
+
+<h3>8.1 Metalls</h3>
+<figure class="w75"><img src="img/metalls.jpg" alt="Taula metalls"></figure>
+<ul>
+<li>Grup majoritari de la taula periòdica. <b>Electronegativitat baixa</b>.</li>
+<li>Gairebé tots sòlids a 25 °C (excepte <b>Hg</b> i potser Fr) i fonen a T elevada.</li>
+<li><b>Mal·leables i dúctils</b>. Bons <b>conductors</b> de l'electricitat i la calor.</li>
+</ul>
+
+<h3>8.2 Naturalesa</h3>
+<ul>
+<li>No es pot explicar amb l'enllaç covalent de Lewis (els electrons són mòbils).</li>
+<li><b>Energia d'ionització baixa</b>: M → M⁺ + e⁻ (perd fàcilment e⁻).</li>
+<li><b>Afinitat electrònica baixa</b>: M⁻ → M + e⁻ (no agafa fàcilment e⁻).</li>
+<li>Model: <b>ions M⁺ envoltats d'un "mar" d'electrons mòbils</b> (electrons "lliures").</li>
+</ul>
+<figure class="w85"><img src="img/metall_props.jpg" alt="Propietats metalls"><figcaption>Enllaç no direccional · altes conductivitats elèctrica i tèrmica · possibilitat de deformació sense trencament (ductilitat i mal·leabilitat).</figcaption></figure>
+
+<h3>8.3 "Enllaç covalent a l'engròs" (teoria OM)</h3>
+<p>Fil hipotètic d'àtoms d'H, afegint-ne cada cop més:</p>
+<div class="two">
+<figure><img src="img/hn_1.jpg" alt="H2 a H4"></figure>
+<figure><img src="img/hn_2.jpg" alt="HN lineal"></figure>
+</div>
+<ul>
+<li>Cada vegada els orbitals estan més a prop (menys separats energèticament).</li>
+<li>L'espai entre el darrer orbital ocupat i el primer buit es fa petit.</li>
+</ul>
+<p><b>W. Heitler i F. London (1927)</b> van aplicar el model OM als metalls. Mètode CLOA: OM com a combinacions lineals dels OA de la capa de valència: <b>n OA → n OM</b>, la meitat enllaçants i la meitat antienllaçants.</p>
+<figure class="w75"><img src="img/na_bandes.jpg" alt="Na bandes"></figure>
+<ul>
+<li>1 mol d'àtoms de Na (N<sub>A</sub> = 6,02·10²³) → 1 mol d'OM, impossibles de distingir: formen un <b>continu</b> → <b>banda d'orbitals</b> (3s) o simplement <b>banda</b>. La diferència d'energia entre OM consecutius és molt petita → continu d'energia.</li>
+</ul>
+
+<h3>8.4 Teoria de bandes</h3>
+<div class="two">
+<figure><img src="img/bandes.jpg" alt="Bandes Na"></figure>
+<div>
+<ul>
+<li>Na: [Ne]3s¹ → la banda 3s queda <b>meitat ocupada</b>, meitat buida. L'últim nivell ocupat: <b>nivell de Fermi</b>.</li>
+<li>També hi ha una banda buida (de 3p del Na). En alcalins i alcalinoterris, la banda p se <b>superposa</b> parcialment amb la s.</li>
+<li><b>Banda de València</b>: OM derivats dels OA (parcialment) ocupats; e⁻ fortament vinculats als àtoms, no mòbils.</li>
+<li><b>Banda de Conducció</b>: OM derivats dels OA buits.</li>
+</ul>
+</div>
+</div>
+<p>Paràmetre clau per a qualsevol sòlid: <b>separació energètica (band gap, E<sub>g</sub>) entre el nivell de Fermi i el primer nivell buit</b>.</p>
+<figure class="w75"><img src="img/conductors.jpg" alt="conductors"></figure>
+<table>
+<tr><th>Tipus</th><th>Band gap</th><th>Comportament</th><th>Exemples</th></tr>
+<tr><td><b>Conductors</b></td><td>≈ 0</td><td>e⁻ promocionables amb poca energia (camp elèctric extern)</td><td>Metalls</td></tr>
+<tr><td><b>Semiconductors</b></td><td>moderat (~1–3 eV)</td><td>L'energia tèrmica pot promocionar alguns e⁻ → conductivitat que <b>depèn fortament de T</b> (augmenta amb T)</td><td>Si, Ge, GaAs</td></tr>
+<tr><td><b>Aïllants</b></td><td>gran (&gt; 3 eV)</td><td>e⁻ no poden passar a la banda de conducció; vinculats a capes externes (enllaç covalent)</td><td>Diamant</td></tr>
+</table>
+<figure class="w60"><img src="img/gaps.jpg" alt="Band gaps"><figcaption>Alguns band gaps (eV). Diamant 5,4 (aïllant). Grafit ≈ 0,04 eV → condueix l'electricitat.</figcaption></figure>
+<div class="ext">
+Tendències: el band gap <b>disminueix en baixar en un grup</b> (C 5,4 → Si 1,1 → Ge 0,72 → Sn 0,08) perquè els orbitals són més difusos i solapen més → bandes més amples. En metalls, la conductivitat <b>disminueix</b> en augmentar T (més vibracions de la xarxa dispersen els e⁻), al contrari que en semiconductors. <b>Dopatge</b>: afegir P/As al Si (tipus n, e⁻ extra) o B/Ga (tipus p, forats) → base de díodes i transistors.
+</div>
+
+<!-- ============================================================ -->
+<h2>9. Annex: Teoria de l'Enllaç de València (EV)</h2>
+
+<h3>9.1 Idea</h3>
+<ul>
+<li>Enllaç = <b>recobriment d'orbitals atòmics monoocupats</b> de dos àtoms. Enllaços localitzats.</li>
+<li>El recobriment duu una <b>densitat electrònica superior a la regió internuclear</b>, és a dir, enllaç.</li>
+</ul>
+<figure class="w75"><img src="img/ev_h2_hf.jpg" alt="EV H2 i HF"><figcaption>H₂ (1s+1s) i HF (1s+2p<sub>z</sub>): enllaços σ.</figcaption></figure>
+
+<h3>9.2 Molècules amb enllaços múltiples: N₂</h3>
+<div class="two">
+<figure><img src="img/ev_n2.jpg" alt="EV N2"></figure>
+<div>
+<ul>
+<li>N: [He]2s²2p³ → 3 e⁻ desaparellats (p<sub>x</sub>, p<sub>y</sub>, p<sub>z</sub>).</li>
+<li>2p<sub>z</sub> + 2p<sub>z</sub> (al llarg de l'eix) → <b>1 enllaç σ</b>.</li>
+<li>2p<sub>x</sub>+2p<sub>x</sub> i 2p<sub>y</sub>+2p<sub>y</sub> (laterals) → <b>2 enllaços π</b>.</li>
+<li>Els 2s no participen (parells lliures).</li>
+</ul>
+<div class="key">En els enllaços múltiples sempre hi ha <b>un enllaç σ</b> i la resta són <b>π</b>. (Doble = σ + π; triple = σ + 2π.)</div>
+</div>
+</div>
+
+<h3>9.3 El problema de la geometria: H₂O</h3>
+<ul>
+<li>O: 1s²2s²2p<sub>x</sub>²2p<sub>y</sub>¹2p<sub>z</sub>¹ (2p<sub>y</sub> i 2p<sub>z</sub> monoocupats) + 2 H: 1s¹.</li>
+<li>Enllaç σ (2p<sub>y</sub> + 1s(H<sub>a</sub>)) i σ (2p<sub>z</sub> + 1s(H<sub>b</sub>)); 2s² i 2p<sub>x</sub>² serien parells lliures.</li>
+<li>Predicció: <b>angle HOH = 90°</b>, però l'experimental és <b>≈ 104,5°</b> (proper al tetraèdric 109,5°). ✗</li>
+</ul>
+<figure class="w75"><img src="img/ev_h2o.jpg" alt="H2O EV"></figure>
+<p>→ Cal introduir els <b>orbitals híbrids</b>.</p>
+
+<h3>9.4 Orbitals híbrids</h3>
+<ul>
+<li>Resultat d'una <b>combinació lineal de dos o més orbitals hidrogenoides del mateix àtom i la mateixa capa (n)</b>. Es generen <b>tants híbrids com OA</b> s'han combinat.</li>
+<li>Els híbrids tenen la <b>mateixa orientació que els enllaços</b> de la molècula.</li>
+<li>La hibridació s'utilitza per <b>explicar</b> geometries experimentals: <b>no és un model predictiu</b>.</li>
+</ul>
+<table>
+<tr><th>OA hibridats</th><th>Nom</th><th>Nº híbrids</th><th>Geometria</th><th>Angle</th><th>Exemple</th><th>Nº estèric VSEPR</th></tr>
+<tr><td>1 s + 1 p</td><td><b>sp</b></td><td>2</td><td>lineal</td><td>180°</td><td>BeH₂, CO₂, C₂H₂</td><td>2</td></tr>
+<tr><td>1 s + 2 p</td><td><b>sp²</b></td><td>3</td><td>trigonal plana</td><td>120°</td><td>BF₃, C₂H₄</td><td>3</td></tr>
+<tr><td>1 s + 3 p</td><td><b>sp³</b></td><td>4</td><td>tetraèdrica</td><td>109,5°</td><td>CH₄, NH₃, H₂O</td><td>4</td></tr>
+<tr style="background:var(--warn)"><td>1 s + 3 p + 1 d</td><td>sp³d</td><td>5</td><td>bipiràmide trigonal</td><td>90°/120°</td><td>PCl₅</td><td>5</td></tr>
+<tr><td>1 s + 3 p + 2 d</td><td><b>d²sp³</b> (sp³d²)</td><td>6</td><td>octaèdrica</td><td>90°</td><td>SF₆</td><td>6</td></tr>
+</table>
+<div class="ext">Truc: <b>nº d'híbrids = nombre estèric</b> (n+m) de VSEPR, incloent-hi els parells lliures. Els orbitals p no hibridats queden disponibles per a enllaços π (p. ex. a C₂H₄ el C és sp² i el p restant forma el π; a C₂H₂ el C és sp i els dos p restants formen 2π). A l'aigua: O sp³, 2 híbrids enllacen amb H i 2 contenen parells lliures → angle ≈ 109,5°, comprimit a 104,5° pels parells lliures.</div>
+
+<div class="two">
+<figure><img src="img/sp.jpg" alt="sp"><figcaption>Hibridació <b>sp</b> (BeH₂): lineal, 180°.</figcaption></figure>
+<figure><img src="img/sp2.jpg" alt="sp2"><figcaption>Hibridació <b>sp²</b> (BF₃): trigonal plana, 120°.</figcaption></figure>
+</div>
+<figure class="w75"><img src="img/sp3.jpg" alt="sp3"><figcaption>Hibridació <b>sp³</b> (CH₄): tetraèdrica, 109°28'.</figcaption></figure>
+
+<!-- ============================================================ -->
+<h2>10. Resum final comparatiu</h2>
+<table>
+<tr><th></th><th>Iònic</th><th>Covalent</th><th>Metàl·lic</th></tr>
+<tr><td>Elements</td><td>metall + no metall (Δχ gran)</td><td>no metalls (Δχ petita)</td><td>metalls (χ baixa)</td></tr>
+<tr><td>Mecanisme</td><td>transferència d'e⁻</td><td>compartició d'e⁻</td><td>mar d'e⁻ deslocalitzats</td></tr>
+<tr><td>Direccionalitat</td><td>no direccional</td><td><b>direccional</b> (geometria)</td><td>no direccional</td></tr>
+<tr><td>Estructura</td><td>xarxa cristal·lina d'ions</td><td>molècules discretes o xarxes covalents</td><td>xarxa de cations</td></tr>
+<tr><td>Estat (25 °C)</td><td>sòlids, p.f. alts</td><td>gasos/líquids/sòlids de p.f. baix (moleculars) o molt alt (xarxa: diamant, SiO₂)</td><td>sòlids (excepte Hg)</td></tr>
+<tr><td>Conductivitat</td><td>només fos o dissolt</td><td>en general aïllants (grafit, excepció)</td><td>alta (sòlid i líquid)</td></tr>
+<tr><td>Mecànica</td><td>durs i fràgils</td><td>variable</td><td>mal·leables i dúctils</td></tr>
+<tr><td>Teoria</td><td>Coulomb + Born</td><td>Lewis, VSEPR, EV, OM</td><td>mar d'e⁻, teoria de bandes</td></tr>
+</table>
+
+<table>
+<tr><th>Teoria</th><th>Què explica</th><th>Què NO explica</th></tr>
+<tr><td>Lewis</td><td>Connectivitat, ordre d'enllaç, càrregues formals, ressonància</td><td>Geometria, energia, paramagnetisme O₂, B₂H₆</td></tr>
+<tr><td>VSEPR</td><td>Geometria i angles (qualitatius), polaritat</td><td>Energies, naturalesa de l'enllaç</td></tr>
+<tr><td>EV + hibridació</td><td>Enllaços σ/π localitzats, geometria (a posteriori)</td><td>No predictiva; paramagnetisme O₂</td></tr>
+<tr><td>OM</td><td>OE, energies, magnetisme, deslocalització, bandes en sòlids</td><td>Complicada sense ordinador en poliatòmiques</td></tr>
+</table>
+
+<div class="box">
+<b>Checklist d'exercici típic</b> (donada una fórmula):
+<ol>
+<li>Comptar e⁻ de valència (± càrrega) → estructura de Lewis + CF + ressonància.</li>
+<li>Nombre estèric n+m → geometria bàsica → geometria derivada (AXₙEₘ) → angles i distorsions.</li>
+<li>Polaritat: suma vectorial de dipols segons la geometria.</li>
+<li>Hibridació de l'àtom central (= nº estèric) i nº d'enllaços σ i π.</li>
+<li>Si és diatòmica: diagrama OM (tipus I si Z ≥ 8 o tipus II si Z &lt; 8 o heteronuclear), configuració, OE, magnetisme.</li>
+</ol>
+</div>
+
+</main></body></html>
